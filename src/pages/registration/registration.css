@@ -34,7 +34,7 @@
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
   }
   
-  .register-photo form {
+  .register-photo .right-section {
     display: table-cell;
     width: 55%;
     background-color: #ffffff;
@@ -44,24 +44,24 @@
 
   
   @media (max-width:991px) {
-    .register-photo form {
+    .register-photo .right-section {
       padding: 40px;
     }
   }
   
-  .register-photo form h4 {
+  .register-photo .right-section h4 {
     font-size: 24px;
     line-height: 1.5;
     color: #2e006b;
   }
-  .register-photo form p{
+  .register-photo .right-section p{
     color: #2e006b;
     font-size: 12px;
   }
-  .register-photo form .form-group{
+  .register-photo .right-section .form-group{
     margin-bottom: 30px;
   }
-  .register-photo form .form-control {
+  .register-photo .right-section .form-control {
     background: transparent;
     border: 1px solid #897fa1;
     border-radius: 10px;
@@ -74,12 +74,12 @@
     margin-bottom: 10px;
   }
   
-  .register-photo form .form-check {
+  .register-photo .right-section .form-check {
     font-size: 13px;
     line-height: 20px;
   }
   
-  .register-photo form .btn-block {
+  .register-photo .right-section .btn-block {
     background: #2e006b;
     border: none;
     border-radius: 4px;
@@ -92,15 +92,15 @@
     width: 100%;
   }
   
-  .register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
+  .register-photo .right-section .btn-primary:hover, .register-photo .right-section .btn-primary:active {
     background: #2e006b;
   }
   
-  .register-photo form .btn-primary:active {
+  .register-photo .right-section .btn-primary:active {
     transform: translateY(1px);
   }
   
-  .register-photo form .already {
+  .register-photo .right-section .already {
     display: block;
     text-align: center;
     font-size: 12px;

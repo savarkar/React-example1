@@ -13,7 +13,10 @@ interface FormValues {
   email: string;
   password: string;
 }
-
+interface loginForm{
+  userName: string,
+  loginPassword: string
+}
 const Register = (props: Props) => {
   const history = useNavigate();
 
@@ -27,11 +30,50 @@ const Register = (props: Props) => {
     email: "",
     password: "",
   });
+  const [loginvalues, setloginFormValues] = React.useState<loginForm>({
+    userName: '',
+    loginPassword: ''
+  })
   const [errors, setErrors] = React.useState<FormValues>({
     name: "",
     email: "",
     password: "",
   });
+  const [loginErrors, setloginErrors] = React.useState<loginForm>({
+    userName: '',
+    loginPassword: ''
+  });
+  const LoginSubmit = async (event: React.FormEvent<HTMLFormElement>)=>{
+      event.preventDefault();
+      if (validateLoginForm()) {
+        console.log("Login is success:", loginvalues);
+        history("/");
+        setloginFormValues({
+        userName: "",
+        loginPassword: "",
+      });
+      }
+      try {
+        const response = await fetch("http://example.com/api/submit-form", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginvalues),
+        });
+
+        const data = await response.json();
+        console.log("Form submitted successfully:", data);
+        setloginFormValues({
+          userName: "",
+          loginPassword: "",
+        });
+
+      } catch (error) {
+        console.error("Error submitting login form:", error);
+      }
+
+  }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -74,7 +116,14 @@ const Register = (props: Props) => {
     }));
     validateForm();
   };
-
+  const handleLoginChange= (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setloginFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+    validateLoginForm();
+  }
   const validateForm = (): boolean => {
     const { name, email, password } = values;
     const errors: FormValues = { name: "", email: "", password: "" };
@@ -104,6 +153,27 @@ const Register = (props: Props) => {
     setErrors(errors);
     return isValid;
   };
+  const validateLoginForm = (): boolean => {
+    const { userName, loginPassword } = loginvalues;
+    const loginErrors: loginForm = { userName: "", loginPassword: "" };
+    let isValid = true;
+
+    if (!userName) {
+      loginErrors.userName = "Username is required";
+      isValid = false;
+    }
+
+    if (!loginPassword) {
+      loginErrors.loginPassword = "Password is required";
+      isValid = false;
+    } else if (loginPassword.length < 6) {
+      loginErrors.loginPassword = "Password must be at least 6 characters long";
+      isValid = false;
+    }
+
+    setloginErrors(loginErrors);
+    return isValid;
+  };
 
 
   return (
@@ -116,7 +186,7 @@ const Register = (props: Props) => {
                {/* <img src={logoImage} alt="earth" />  */}
               <h2>Start Learning Now</h2>
             </div>
-            <form onSubmit={handleSubmit}>
+            <div className='right-section'>
      
             <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
@@ -127,6 +197,8 @@ const Register = (props: Props) => {
           </TabList>
         </Box>
         <TabPanel value="1">
+          
+        <form onSubmit={handleSubmit}>
         <h4><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
                 <p>Start learning and create your account</p>
         <div className="form-group">
@@ -167,15 +239,36 @@ const Register = (props: Props) => {
 
         <div>
         </div>
+        </form>
         </TabPanel>
         <TabPanel value="2">
           <p>LogIn</p>
+          <form onSubmit={LoginSubmit}>
+          <div className="form-group">
+          <input className="form-control" type="text"  placeholder="User Name" 
+                 id="userName"
+                 name="userName"
+                 value={loginvalues.userName}
+                 onChange={handleLoginChange}
+                />
+                <p className='text-danger'>{loginErrors.userName}</p>
+          </div>
+      <div className="form-group">
+        <input className="form-control" type="loginPassword" name="loginPassword" placeholder="Password" 
+         id="loginPassword"
+         value={loginvalues.loginPassword}
+         onChange={handleLoginChange}
+        />
+         <p className='text-danger'>{loginErrors.loginPassword}</p>
+        </div>
+        <div className="form-group">
+        <button className="btn btn-block" type="submit">Login</button></div>
+          </form>
         </TabPanel>
       </TabContext>
     </Box>
    
-
-    </form>
+    </div>
     </div>
     </div>
     </div>
