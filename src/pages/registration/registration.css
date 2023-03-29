@@ -58,7 +58,9 @@
     color: #2e006b;
     font-size: 12px;
   }
-  
+  .register-photo form .form-group{
+    margin-bottom: 30px;
+  }
   .register-photo form .form-control {
     background: transparent;
     border: 1px solid #897fa1;
@@ -67,10 +69,9 @@
     outline: none;
     color: inherit;
     text-indent: 0px;
-    height: 40px;
-    margin-bottom: 30px;
     font-size: 12px;
     color: #2e006b;
+    margin-bottom: 10px;
   }
   
   .register-photo form .form-check {

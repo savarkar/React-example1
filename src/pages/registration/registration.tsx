@@ -1,154 +1,110 @@
-//import * as React from 'react';
 import './registration.css';
-//import logoImage from "../../assets/images/registerlogo.PNG";
-//import Tabs from 'react-bootstrap/Tabs';
-// import Tab from 'react-bootstrap/Tab';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import { useNavigate } from "react-router-dom";
 
+type Props = {};
+interface FormValues {
+  name: string;
+  email: string;
+  password: string;
+}
 
-class Register extends React.Component {
+const Register = (props: Props) => {
+  const history = useNavigate();
 
+  const [value, setValue] = React.useState('1');
 
-  constructor(props:any) {
-    super(props);
-    const [value, setValue] = React.useState('1');9
+  const handleChangeTab= (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+  const [values, setFormValues] = React.useState<FormValues>({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = React.useState<FormValues>({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-      setValue(newValue);
-    };
-
-    this.state = {
-      form: {
-        fullname: "",
+    if (validateForm()) {
+      console.log("Form submitted successfully:", values);
+      history("/register-thankyou");
+      setFormValues({
+        name: "",
         email: "",
         password: "",
-      },
-      formErrors: {
-        fullname: null,
-        email: null,
-        password:null
+      });
+      try {
+        const response = await fetch("http://example.com/api/submit-form", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        });
+
+        const data = await response.json();
+        console.log("Form submitted successfully:", data);
+        setFormValues({
+          name: "",
+          email: "",
+          password: "",
+        });
+
+      } catch (error) {
+        console.error("Error submitting form:", error);
       }
     }
-  }
-  handleChange = (e:[]) => {
-    const { name, value, checked } = e.target;
-    const { form, formErrors } = this.state;
-    let formObj = {};
-    if (name === "language") {
-      // handle the change event of language field
-      if (checked) {
-        // push selected value in list
-        formObj = { ...form };
-        formObj[name].push(value);
-      } else {
-        // remove unchecked value from the list
-        formObj = {
-          ...form,
-          [name]: form[name].filter(x:any => x !== value)
-        };
-      }
-    } else {
-      // handle change event except language field
-      formObj = {
-        ...form,
-        [name]: value
-      };
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+    validateForm();
+  };
+
+  const validateForm = (): boolean => {
+    const { name, email, password } = values;
+    const errors: FormValues = { name: "", email: "", password: "" };
+    let isValid = true;
+
+    if (!name) {
+      errors.name = "Name is required";
+      isValid = false;
     }
-    this.setState({ form: formObj }, () => {
-      if (!Object.keys(formErrors).includes(name)) return;
-      let formErrorsObj = {};
-        const errorMsg = this.validateField(name, value, refValue);
-        formErrorsObj = { ...formErrors, [name]: errorMsg };
-        if (!errorMsg && refValue) {
-          formErrorsObj.confirmPassword = null;
-          formErrorsObj.password = null;
-        }
-      } else {
-        const errorMsg = this.validateField(
-          name,
-          name === "language" ? this.state.form["language"] : value
-        );
-        formErrorsObj = { ...formErrors, [name]: errorMsg };
-      }
-      this.setState({ formErrors: formErrorsObj });
-    });
-  };
 
-  validateField = (name, value, refValue) => {
-    let errorMsg = null;
-    switch (name) {
-      case "name":
-        if (!value) errorMsg = "Please enter Name.";
-        break;
-      case "email":
-        if (!value) errorMsg = "Please enter Email.";
-        else if (
-          !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-            value
-          )
-        )
-          errorMsg = "Please enter valid Email.";
-        break;
-      case "mobile":
-        if (!value) errorMsg = "Please enter Mobile.";
-        break;
-      case "country":
-        if (!value) errorMsg = "Please select Country.";
-        break;
-      case "gender":
-        if (!value) errorMsg = "Please select Gender.";
-        break;
-      case "password":
-        // refValue is the value of Confirm Password field
-        if (!value) errorMsg = "Please enter Password.";
-        else if (refValue && value !== refValue)
-          errorMsg = "Password and Confirm Password does not match.";
-        break;
-      case "confirmPassword":
-        // refValue is the value of Password field
-        if (!value) errorMsg = "Please enter Confirm Password.";
-        else if (refValue && value !== refValue)
-          errorMsg = "Password and Confirm Password does not match.";
-        break;
-      case "language":
-        if (value.length === 0) errorMsg = "Please select Language.";
-        break;
-      default:
-        break;
+    if (!email) {
+      errors.email = "Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      errors.email = "Email is invalid";
+      isValid = false;
     }
-    return errorMsg;
-  };
 
-  validateForm = (form, formErrors, validateFunc) => {
-    const errorObj = {};
-    Object.keys(formErrors).map(x => {
-      let refValue = null;
-      if (x === "password" || x === "confirmPassword") {
-        refValue = form[x === "password" ? "confirmPassword" : "password"];
-      }
-      const msg = validateFunc(x, form[x], refValue);
-      if (msg) errorObj[x] = msg;
-    });
-    return errorObj;
-  };
-
-  handleSubmit = () => {
-    const { form, formErrors } = this.state;
-    const errorObj = this.validateForm(form, formErrors, this.validateField);
-    if (Object.keys(errorObj).length !== 0) {
-      this.setState({ formErrors: { ...formErrors, ...errorObj } });
-      return false;
+    if (!password) {
+      errors.password = "Password is required";
+      isValid = false;
+    } else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters long";
+      isValid = false;
     }
-    console.log("Data: ", form);
+
+    setErrors(errors);
+    return isValid;
   };
 
-  const { form, formErrors } = this.state;
-  render() {
 
   return (
     
@@ -160,12 +116,12 @@ class Register extends React.Component {
                {/* <img src={logoImage} alt="earth" />  */}
               <h2>Start Learning Now</h2>
             </div>
-            <form method="post">
+            <form onSubmit={handleSubmit}>
      
             <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
             <Tab label="Create Accont" value="1" />
             <Tab label="Login" value="2" />
           </TabList>
@@ -174,19 +130,33 @@ class Register extends React.Component {
         <h4><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
                 <p>Start learning and create your account</p>
         <div className="form-group">
-          <input className="form-control" type="text" name="fullname" placeholder="Full name" 
-                  value={form.fullname}
-                  onChange={this.handleChange}
-                  onBlur={this.handleChange}
+          <input className="form-control" type="text"  placeholder="Full name" 
+                 id="name"
+                 name="name"
+                 value={values.name}
+                 onChange={handleChange}
                 />
-                {formErrors.fullname && (
-                  <span className="err">{formErrors.fullname}</span>
-                )}
+                <p className='text-danger'>{errors.name}</p>
           </div>
-      <div className="form-group"><input className="form-control" type="Email" name="Email" placeholder="Email" /></div>
-      <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Password" /></div>
+      <div className="form-group">
+        <input className="form-control" type="email" name="email" placeholder="Email" 
+         id="email"
+         value={values.email}
+         onChange={handleChange}
+        />
+         <p className='text-danger'>{errors.email}</p>
+        </div>
+      <div className="form-group">
+        <input className="form-control" type="password" name="password" placeholder="Password" 
+          id="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+         <p className='text-danger'>{errors.password}</p>
+        </div>
 
-      <div className="form-group"><button className="btn btn-block" type="submit">Create Account</button></div>
+      <div className="form-group">
+        <button className="btn btn-block" type="submit">Create Account</button></div>
       <div className='mt-5 mb-3 well'>
       <p className="text-divider"><span>Or Sign up with</span></p>
         </div>
@@ -211,6 +181,5 @@ class Register extends React.Component {
     </div>
   );
  };
-};
 
 export default Register;
