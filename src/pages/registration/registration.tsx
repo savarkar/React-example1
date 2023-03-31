@@ -6,6 +6,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useNavigate } from "react-router-dom";
+import logoimage from '../../assets/images/register-logo.jpg';
 
 type Props = {};
 interface FormValues {
@@ -183,7 +184,7 @@ const Register = (props: Props) => {
       <div className="register-photo">
         <div className="form-container">
             <div className="image-holder">
-               {/* <img src={logoImage} alt="earth" />  */}
+                <img src='logoimage' alt="earth" />  
               <h2>Start Learning Now</h2>
             </div>
             <div className='right-section'>

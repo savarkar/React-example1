@@ -2,7 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Register from "./pages/registration/registration";
 import Thankyou from "./pages/registration/registration-thankyou";
+
+import MyLearnings from "../src/pages/student/MyLearnings";
 import { routes } from "./routes";
+
 
 function App() {
   return (
@@ -12,6 +15,7 @@ function App() {
           {routes}
         </Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/mylearnings" element={<MyLearnings />}></Route>
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
       </Routes>
     </BrowserRouter>
