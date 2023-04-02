@@ -182,7 +182,7 @@ const Register = (props: Props) => {
     <div className="container">
       <p>Registration Page</p>
       <div className="register-photo">
-        <div className="form-container row">
+        <div className="form-container row item col-md-3">
             <div className="image-holder col-md-5">
                 <img src='logoimage' alt="earth" />  
               <h2>Start Learning Now</h2>

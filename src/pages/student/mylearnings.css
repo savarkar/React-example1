@@ -29,6 +29,7 @@
 /* .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
     color: #fff !important;
 } */
+
 .css-heg063-MuiTabs-flexContainer {
 display: flex;
 justify-content: center;
@@ -50,14 +51,14 @@ width: auto;
     font-size: 16px !important;
 }
 .wrap {
-    display: flex;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 20px !important;
-    width: 800px;
     justify-content: left;
     margin: 0 auto;
     flex-wrap: wrap;
+    justify-content: space-between;
+    display: flex;
   }
   .wrap .item img{
     height: 60px;
@@ -76,14 +77,23 @@ width: auto;
     background: linear-gradient(to bottom, #2b0e48 0%, #a83fcb 100%);
   }
   .item {
-    flex: 1;
     height: 200px;
     background: linear-gradient(to bottom, #3e007a 0%, #9f03d3 100%);
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     text-align: center;
     color: #fff;
     padding-top: 20px;
+    width: 100%;
+  }
+  @media screen and (min-width:768px) {
+    .wrap{
+        width: 800px;
+    }
+    .item{
+        width: 30%;
+        margin: 10px;
+    }
   }
   
 .post-sec{

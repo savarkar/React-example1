@@ -35,7 +35,7 @@ const MyLearnings = (props: Props) => {
           </TabList>
         </Box>
         <TabPanel value="1">
-        <div className="wrap">
+        <div className="wrap row">
             <div className="item">
             <img src="https://img.icons8.com/color/48/null/pdf.png"/>
             <p><b>Dummy text dhkjd mdsfsdfa</b></p>
@@ -46,24 +46,24 @@ const MyLearnings = (props: Props) => {
             <p><b>Dummy text dhkjd mdsfsdfa</b></p>
             <p>test ddhjd</p>
             </div>
-            <div className="item">
+            <div className="item ">
             <img src="https://img.icons8.com/color/48/null/questions.png"/>
             <p><b>Dummy text dhkjd mdsfsdfa</b></p>
             <p>test ddhjd</p>
             </div>
             </div>
-            <div className="wrap">
-            <div className="item">
-            <img src="https://img.icons8.com/color/48/null/questions.png"/>
-            <p><b>Dummy text dhkjd mdsfsdfa</b></p>
-            <p>test ddhjd</p>
-            </div>
+            <div className="wrap row">
             <div className="item">
             <img src="https://img.icons8.com/color/48/null/questions.png"/>
             <p><b>Dummy text dhkjd mdsfsdfa</b></p>
             <p>test ddhjd</p>
             </div>
             <div className="item">
+            <img src="https://img.icons8.com/color/48/null/questions.png"/>
+            <p><b>Dummy text dhkjd mdsfsdfa</b></p>
+            <p>test ddhjd</p>
+            </div>
+            <div className="item ">
             <img src="https://img.icons8.com/color/48/null/questions.png"/>
             <p><b>Dummy text dhkjd mdsfsdfa</b></p>
             <p>test ddhjd</p>
