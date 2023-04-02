@@ -1,16 +1,8 @@
-.register-photo {
-    background: #f1f7fc;
-    padding: 80px 0;
-  }
-  
   .register-photo .image-holder {
-    display: table-cell;
-    width: auto;
     background: url('../../assets/images/register-background.png');
     background-size: cover;
     background-color: #2e006b;
-    padding: 50px;
-    margin: auto;
+    padding: 20px;
     text-align: center;
     vertical-align: middle;
     padding-left: 100px;
@@ -23,29 +15,31 @@
     font-weight: bold;
     line-height: 80px;
     text-align: left;
-
-
   } 
   
   .register-photo .form-container {
-    display: table;
     max-width: 980px;
-    margin: 0 auto;
+    text-align: center;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
   }
   
   .register-photo .right-section {
-    display: table-cell;
-    width: 55%;
     background-color: #ffffff;
     padding: 40px 30px;
     color: #505e6c;
+    text-align: centers;
+  }
+  p.text-danger{
+    text-align: left !important;
   }
 
   
-  @media (max-width:991px) {
+  @media (min-width:991px) {
     .register-photo .right-section {
       padding: 40px;
+    }
+    .register-photo {
+      padding: 20px 0;
     }
   }
   
@@ -167,4 +161,7 @@ ul.nav.nav-tabs {
 }
 .css-1aquho2-MuiTabs-indicator{
     background-color: #2e006b !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  border-bottom: 2px solid;
 }

@@ -6,8 +6,8 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import './mylearnings.css'
 import { display } from '@mui/system';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"; 
+//import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css"; 
 type Props = {};
 
 const MyLearnings = (props: Props) => {
