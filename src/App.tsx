@@ -5,8 +5,8 @@ import Thankyou from "./pages/registration/registration-thankyou";
 
 import MyLearnings from "../src/pages/student/MyLearnings";
 import { routes } from "./routes";
-
-
+// import Carousel from './pages/student/carosel';
+import cApp from './pages/student/Product-Slider'
 function App() {
   return (
     <BrowserRouter>
