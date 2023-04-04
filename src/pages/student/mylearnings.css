@@ -4,7 +4,7 @@
 }
 .tabs-section{
   width: 100%;
-  margin-top: -50px;
+  margin-top: -10px;
   z-index: 1000;
   align-items: end
 };
@@ -87,7 +87,10 @@ width: auto;
     padding-top: 20px;
     width: 100%;
   }
-  @media screen and (min-width:768px) {
+  .custom-textarea{
+    width: 100%;
+  }
+  @media screen and (min-width:860px) {
     .wrap{
         width: 800px;
     }
@@ -95,10 +98,17 @@ width: auto;
         width: 30%;
         margin: 10px;
     }
+    .post-sec{
+        width: 800px;
+      }
+      .tabs-section{
+        width: 100%;
+        margin-top: -50px;
+      }
   }
+ 
   
 .post-sec{
-    width: 800px;
     justify-content: left;
     margin: 0 auto;
     border: 3px solid #949495;

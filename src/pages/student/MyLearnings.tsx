@@ -82,7 +82,7 @@ const MyLearnings = (props: Props) => {
             </div>
             <div className='post-sec'>
                     <h3>Post your questions/ doubts here</h3>
-                    <textarea className='custom-textarea' cols={70} rows={5} placeholder="Write Something...">
+                    <textarea className='custom-textarea' rows={5} placeholder="Write Something...">
 
                     </textarea>
                     <center>
