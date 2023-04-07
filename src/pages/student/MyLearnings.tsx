@@ -14,7 +14,7 @@ import reactslider from '../student/Product-Slider';
 import {Card, Button } from 'react-bootstrap';
 import cApp from '../student/Product-Slider';
 import Carousel from '../student/Product-Slider';
-
+import Commonheader from '../../components/layout/header';
 type Props = {};
 
 const MyLearnings = (props: Props) => {
@@ -29,13 +29,15 @@ const MyLearnings = (props: Props) => {
   };
 
   return (
-    <><div className='learning-headsection'>
+    <>
+  <Commonheader />
+    <div className='learning-headsection'>
         <div className='container'>
           <h4>My Learnings</h4>
           </div>
       </div>
       <div className='container'>
-              
+    <div></div>
             <Box sx={{ width: '100%', typography: 'body1' }} className="tabs-section">
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

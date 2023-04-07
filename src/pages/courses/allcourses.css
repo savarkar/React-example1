@@ -1,0 +1,14 @@
+.bg-home{
+    background: linear-gradient(180deg, #35185A 0%, rgba(53, 24, 90, 0.79) 100%);
+    color: #fff;
+    padding: 30px 0px;
+}
+.card-body-inner{
+    font-size: 11px;
+}
+.card-body-inner .fa{
+    font-size: 8px;
+}
+.text-theme{
+    color: #290854;
+}

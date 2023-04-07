@@ -6,7 +6,8 @@ import Thankyou from "./pages/registration/registration-thankyou";
 import MyLearnings from "../src/pages/student/MyLearnings";
 import { routes } from "./routes";
 // import Carousel from './pages/student/carosel';
-import cApp from './pages/student/Product-Slider'
+import sheader from "./components/layout/header";
+import Allcourses from "./pages/courses/allcourses";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/mylearnings" element={<MyLearnings />}></Route>
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
+        <Route path="/all-courses" element={<Allcourses />}></Route>
+        
       </Routes>
     </BrowserRouter>
   );

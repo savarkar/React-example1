@@ -1,11 +1,10 @@
   .register-photo .image-holder {
     background: url('../../assets/images/register-background.png');
-    background-size: cover;
+    background-size: 100%;
     background-color: #2e006b;
     padding: 20px;
     text-align: center;
     vertical-align: middle;
-    padding-left: 100px;
   }
   .register-photo .image-holder h2{
     font-size:65px;

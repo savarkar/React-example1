@@ -2,6 +2,15 @@
     background-color:blueviolet ;
     padding: 20px 0px;
 }
+.learning-headsection h4{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 56px;
+    
+    color: #F1E7FF;
+}
 .tabs-section{
   width: 100%;
   margin-top: -10px;
@@ -94,7 +103,7 @@ width: auto;
     .wrap{
         width: 800px;
     }
-    .item{
+   .wrap .item{
         width: 30%;
         margin: 10px;
     }
