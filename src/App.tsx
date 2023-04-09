@@ -8,6 +8,8 @@ import { routes } from "./routes";
 // import Carousel from './pages/student/carosel';
 import sheader from "./components/layout/header";
 import Allcourses from "./pages/courses/allcourses";
+import CourseDetails from "./pages/courses/course-details";
+
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +21,7 @@ function App() {
         <Route path="/mylearnings" element={<MyLearnings />}></Route>
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
         <Route path="/all-courses" element={<Allcourses />}></Route>
+        <Route path="/coursedetails" element={<CourseDetails />}></Route>
         
       </Routes>
     </BrowserRouter>
