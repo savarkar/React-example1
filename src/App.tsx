@@ -9,6 +9,7 @@ import { routes } from "./routes";
 import sheader from "./components/layout/header";
 import Allcourses from "./pages/courses/allcourses";
 import CourseDetails from "./pages/courses/course-details";
+import Qrcodes from "./pages/courses/qrcode";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
         <Route path="/all-courses" element={<Allcourses />}></Route>
         <Route path="/coursedetails" element={<CourseDetails />}></Route>
+        <Route path="/qrcode" element={<Qrcodes />}></Route>
         
       </Routes>
     </BrowserRouter>
