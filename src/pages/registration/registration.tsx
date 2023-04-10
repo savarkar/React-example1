@@ -32,8 +32,8 @@ const Register = (props: Props) => {
     password: "",
   });
   const [loginvalues, setloginFormValues] = React.useState<loginForm>({
-    userName: '',
-    loginPassword: ''
+    userName: 'testid',
+    loginPassword: '123456'
   })
   const [errors, setErrors] = React.useState<FormValues>({
     name: "",
@@ -48,31 +48,31 @@ const Register = (props: Props) => {
       event.preventDefault();
       if (validateLoginForm()) {
         console.log("Login is success:", loginvalues);
-        history("/");
+        history("/dashboard/student");
         setloginFormValues({
         userName: "",
         loginPassword: "",
       });
       }
-      try {
-        const response = await fetch("http://example.com/api/submit-form", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginvalues),
-        });
+      // try {
+      //   const response = await fetch("http://example.com/api/submit-form", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(loginvalues),
+      //   });
 
-        const data = await response.json();
-        console.log("Form submitted successfully:", data);
-        setloginFormValues({
-          userName: "",
-          loginPassword: "",
-        });
+      //   const data = await response.json();
+      //   console.log("Form submitted successfully:", data);
+      //   setloginFormValues({
+      //     userName: "",
+      //     loginPassword: "",
+      //   });
 
-      } catch (error) {
-        console.error("Error submitting login form:", error);
-      }
+      // } catch (error) {
+      //   console.error("Error submitting login form:", error);
+      // }
 
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -80,32 +80,32 @@ const Register = (props: Props) => {
 
     if (validateForm()) {
       console.log("Form submitted successfully:", values);
-      history("/register-thankyou");
+      history("/test");
       setFormValues({
         name: "",
         email: "",
         password: "",
       });
-      try {
-        const response = await fetch("http://example.com/api/submit-form", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        });
+      // try {
+      //   const response = await fetch("http://example.com/api/submit-form", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(values),
+      //   });
 
-        const data = await response.json();
-        console.log("Form submitted successfully:", data);
-        setFormValues({
-          name: "",
-          email: "",
-          password: "",
-        });
+      //   const data = await response.json();
+      //   console.log("Form submitted successfully:", data);
+      //   setFormValues({
+      //     name: "",
+      //     email: "",
+      //     password: "",
+      //   });
 
-      } catch (error) {
-        console.error("Error submitting form:", error);
-      }
+      // } catch (error) {
+      //   console.error("Error submitting form:", error);
+      // }
     }
   };
 
@@ -180,7 +180,6 @@ const Register = (props: Props) => {
   return (
     
     <div className="container">
-      <p>Registration Page</p>
       <div className="register-photo">
         <div className="form-container row d-flex justify-content-center mx-auto">
             <div className="image-holder col-md-6">

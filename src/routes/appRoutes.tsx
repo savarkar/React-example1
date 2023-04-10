@@ -26,18 +26,29 @@ import ButtonPage from "../pages/resources/ButtonPage";
 import InstallationPage from "../pages/installation/InstallationPage";
 import MessagePage from "../pages/message/MessagePage";
 import Register from "../pages/registration/registration"
+import MyLearnings from "../pages/student/MyLearnings";
 
 const appRoutes: RouteType[] = [
   {
     index: true,
-    path: "/",
+    path: "/dashboard",
     element: <HomePage />,
-    state: "home",
+    state: "dashboard",
     sidebarProps: {
-      displayText: "Main Menu",
+      displayText: "Dashboard",
       icon: <HomeOutlinedIcon />
     }
   },
+  // {
+  //   index: true,
+  //   path: "/dashboard",
+  //   element: <HomePage />,
+  //   state: "dashboard",
+  //   sidebarProps: {
+  //     displayText: "My Courses",
+  //     icon: <MyLearnings />
+  //   }
+  // },
 
   // {
   //   path: "/installation",
@@ -50,7 +61,7 @@ const appRoutes: RouteType[] = [
   // },
   //This section belongs to Student Dash Boards
   {
-    path: "/student",
+    path: "/dashboard/student",
     element: <Student />,
     state: "student",
     sidebarProps: {
@@ -64,224 +75,249 @@ const appRoutes: RouteType[] = [
         state: "student.index"
       },
       {
-        path: "/student/GeniusBox",
+        path: "/dashboard/student/GeniusBox",
         element: <GeniusBox />,
         state: "student.geniusBox",
         sidebarProps: {
           displayText: "Genius Box"
         },
       },
-      {
-        path: "/student/PartcipationHistory",
-        element: <PartcipationHistory />,
-        state: "student.partcipationHistory",
-        sidebarProps: {
-          displayText: "Partcipation History"
-        }
-      },
-      {
-        path: "/student/RewardBox",
-        element: <RewardBox />,
-        state: "student.rewardBox",
-        sidebarProps: {
-          displayText: "Reward Box"
-        },
-      },
-      {
-        path: "/student/SubscriptionToken",
-        element: <SubscriptionToken />,
-        state: "student.subscriptionToken",
-        sidebarProps: {
-          displayText: "Subscription Token"
-        },
-      }
+      // {
+      //   path: "/student/PartcipationHistory",
+      //   element: <PartcipationHistory />,
+      //   state: "student.partcipationHistory",
+      //   sidebarProps: {
+      //     displayText: "Partcipation History"
+      //   }
+      // },
+      // {
+      //   path: "/student/RewardBox",
+      //   element: <RewardBox />,
+      //   state: "student.rewardBox",
+      //   sidebarProps: {
+      //     displayText: "Reward Box"
+      //   },
+      // },
+      // {
+      //   path: "/student/SubscriptionToken",
+      //   element: <SubscriptionToken />,
+      //   state: "student.subscriptionToken",
+      //   sidebarProps: {
+      //     displayText: "Subscription Token"
+      //   },
+      // }
     ]
   },
-//This section belongs to Instructor Dash Boards
-{
-  path: "/instructor",
-  element: <Instructor />,
-  state: "instructor",
-  sidebarProps: {
-    displayText: "Instructor",
-    icon: <DriveFileMoveOutlinedIcon />
-  },
-  child: [
-    {
-      index: true,
-      element: <Instructor />,
-      state: "student.index"
-    },
-    // {
-    //   path: "/instructor/Courses",
-    //   element: <Courses />,
-    //   state: "instructor.courses",
-    //   sidebarProps: {
-    //     displayText: "Courses"
-    //   },
-    // },
-    {
-      path: "/instructor/PartcipationHistory",
-      element: <PartcipationHistory />,
-      state: "instructor.partcipationHistory",
-      sidebarProps: {
-        displayText: "Student Connect"
-      }
-    },
-    {
-      path: "/instructor/RewardBox",
-      element: <RewardBox />,
-      state: "instructor.rewardBox",
-      sidebarProps: {
-        displayText: "Upcoming Courses"
-      },
-    },
-    {
-      path: "/instructor/SubscriptionToken",
-      element: <SubscriptionToken />,
-      state: "instructor.subscriptionToken",
-      sidebarProps: {
-        displayText: "TaaS Challenge"
-      },
-    }
-  ]
-},
-//This section belongs to Parent Dash Boards
-{
-  path: "/parent",
-  element: <Parent />,
-  state: "parent",
-  sidebarProps: {
-    displayText: "Parent",
-    icon: <DriveFileMoveOutlinedIcon />
-  },
-  child: [
-    {
-      index: true,
-      element: <Parent />,
-      state: "parent.index"
-    },
-    {
-      path: "/parent/GeniusBox",
-      element: <GeniusBox />,
-      state: "parent.geniusBox",
-      sidebarProps: {
-        displayText: "Student Report"
-      },
-    },
-    {
-      path: "/parent/PartcipationHistory",
-      element: <PartcipationHistory />,
-      state: "parent.partcipationHistory",
-      sidebarProps: {
-        displayText: "Connect Instructor"
-      }
-    },
-    {
-      path: "/parent/RewardBox",
-      element: <RewardBox />,
-      state: "parent.rewardBox",
-      sidebarProps: {
-        displayText: "Post Query"
-      },
-    },
-    {
-      path: "/parent/SubscriptionToken",
-      element: <SubscriptionToken />,
-      state: "parent.subscriptionToken",
-      sidebarProps: {
-        displayText: "Feedback"
-      },
-    }
-  ]
-},
-//This section belongs to Admin Dash Boards
-{
-  path: "/admin",
-  element: <Admin />,
-  state: "admin",
-  sidebarProps: {
-    displayText: "Admin",
-    icon: <DriveFileMoveOutlinedIcon />
-  },
-  child: [
-    {
-      index: true,
-      element: <Admin />,
-      state: "admin.index"
-    },
-    {
-      path: "/admin/GeniusBox",
-      element: <GeniusBox />,
-      state: "admin.geniusBox",
-      sidebarProps: {
-        displayText: "Student Analytics"
-      },
-    },
-    {
-      path: "/admin/PartcipationHistory",
-      element: <PartcipationHistory />,
-      state: "admin.partcipationHistory",
-      sidebarProps: {
-        displayText: "Instructor Analytics"
-      }
-    },
-    {
-      path: "/admin/RewardBox",
-      element: <RewardBox />,
-      state: "admin.rewardBox",
-      sidebarProps: {
-        displayText: "Parent Analytics"
-      },
-    },
-    {
-      path: "/admin/SubscriptionToken",
-      element: <SubscriptionToken />,
-      state: "admin.subscriptionToken",
-      sidebarProps: {
-        displayText: "Course Analytics"
-      },
-    }
-  ]
-},
   {
-    path: "/resources",
-    element: <ResourcesPageLayout />,
-    state: "resources",
+    path: "/dashboard/courses",
+    element: <Student />,
+    state: "courses",
     sidebarProps: {
-      displayText: "Resources",
-      icon: <FolderOutlinedIcon />
+      displayText: "Courses",
+      icon: <DriveFileMoveOutlinedIcon />
     },
     child: [
       {
-        path: "/resources/alert",
-        element: <AlertPage />,
-        state: "resources.alert",
-        sidebarProps: {
-          displayText: "Alert"
-        },
+        index: true,
+        element: <Student />,
+        state: "student.index"
       },
       {
-        path: "/resources/button",
-        element: <ButtonPage />,
-        state: "resources.button",
+        path: "/dashboard/courses/GeniusBox",
+        element: <GeniusBox />,
+        state: "student.geniusBox",
         sidebarProps: {
-          displayText: "Button"
-        }
-      }
+          displayText: "All Courses"
+        },
+      },
+     
     ]
   },
+//This section belongs to Instructor Dash Boards
+// {
+//   path: "/instructor",
+//   element: <Instructor />,
+//   state: "instructor",
+//   sidebarProps: {
+//     displayText: "Instructor",
+//     icon: <DriveFileMoveOutlinedIcon />
+//   },
+//   child: [
+//     {
+//       index: true,
+//       element: <Instructor />,
+//       state: "student.index"
+//     },
+//     // {
+//     //   path: "/instructor/Courses",
+//     //   element: <Courses />,
+//     //   state: "instructor.courses",
+//     //   sidebarProps: {
+//     //     displayText: "Courses"
+//     //   },
+//     // },
+//     {
+//       path: "/instructor/PartcipationHistory",
+//       element: <PartcipationHistory />,
+//       state: "instructor.partcipationHistory",
+//       sidebarProps: {
+//         displayText: "Student Connect"
+//       }
+//     },
+//     {
+//       path: "/instructor/RewardBox",
+//       element: <RewardBox />,
+//       state: "instructor.rewardBox",
+//       sidebarProps: {
+//         displayText: "Upcoming Courses"
+//       },
+//     },
+//     {
+//       path: "/instructor/SubscriptionToken",
+//       element: <SubscriptionToken />,
+//       state: "instructor.subscriptionToken",
+//       sidebarProps: {
+//         displayText: "TaaS Challenge"
+//       },
+//     }
+//   ]
+// },
+// //This section belongs to Parent Dash Boards
+// {
+//   path: "/parent",
+//   element: <Parent />,
+//   state: "parent",
+//   sidebarProps: {
+//     displayText: "Parent",
+//     icon: <DriveFileMoveOutlinedIcon />
+//   },
+//   child: [
+//     {
+//       index: true,
+//       element: <Parent />,
+//       state: "parent.index"
+//     },
+//     {
+//       path: "/parent/GeniusBox",
+//       element: <GeniusBox />,
+//       state: "parent.geniusBox",
+//       sidebarProps: {
+//         displayText: "Student Report"
+//       },
+//     },
+//     {
+//       path: "/parent/PartcipationHistory",
+//       element: <PartcipationHistory />,
+//       state: "parent.partcipationHistory",
+//       sidebarProps: {
+//         displayText: "Connect Instructor"
+//       }
+//     },
+//     {
+//       path: "/parent/RewardBox",
+//       element: <RewardBox />,
+//       state: "parent.rewardBox",
+//       sidebarProps: {
+//         displayText: "Post Query"
+//       },
+//     },
+//     {
+//       path: "/parent/SubscriptionToken",
+//       element: <SubscriptionToken />,
+//       state: "parent.subscriptionToken",
+//       sidebarProps: {
+//         displayText: "Feedback"
+//       },
+//     }
+//   ]
+// },
+// //This section belongs to Admin Dash Boards
+// {
+//   path: "/admin",
+//   element: <Admin />,
+//   state: "admin",
+//   sidebarProps: {
+//     displayText: "Admin",
+//     icon: <DriveFileMoveOutlinedIcon />
+//   },
+//   child: [
+//     {
+//       index: true,
+//       element: <Admin />,
+//       state: "admin.index"
+//     },
+//     {
+//       path: "/admin/GeniusBox",
+//       element: <GeniusBox />,
+//       state: "admin.geniusBox",
+//       sidebarProps: {
+//         displayText: "Student Analytics"
+//       },
+//     },
+//     {
+//       path: "/admin/PartcipationHistory",
+//       element: <PartcipationHistory />,
+//       state: "admin.partcipationHistory",
+//       sidebarProps: {
+//         displayText: "Instructor Analytics"
+//       }
+//     },
+//     {
+//       path: "/admin/RewardBox",
+//       element: <RewardBox />,
+//       state: "admin.rewardBox",
+//       sidebarProps: {
+//         displayText: "Parent Analytics"
+//       },
+//     },
+//     {
+//       path: "/admin/SubscriptionToken",
+//       element: <SubscriptionToken />,
+//       state: "admin.subscriptionToken",
+//       sidebarProps: {
+//         displayText: "Course Analytics"
+//       },
+//     }
+//   ]
+// },
+//   {
+//     path: "/resources",
+//     element: <ResourcesPageLayout />,
+//     state: "resources",
+//     sidebarProps: {
+//       displayText: "Resources",
+//       icon: <FolderOutlinedIcon />
+//     },
+//     child: [
+//       {
+//         path: "/resources/alert",
+//         element: <AlertPage />,
+//         state: "resources.alert",
+//         sidebarProps: {
+//           displayText: "Alert"
+//         },
+//       },
+//       {
+//         path: "/resources/button",
+//         element: <ButtonPage />,
+//         state: "resources.button",
+//         sidebarProps: {
+//           displayText: "Button"
+//         }
+//       }
+//     ]
+//   },
+//   {
+//     path: "/message",
+//     element: <MessagePage />,
+//     state: "message",
+//     sidebarProps: {
+//       displayText: "Message",
+//       icon: <MessageOutlinedIcon />
+//     }
+//   },
   {
-    path: "/message",
-    element: <MessagePage />,
-    state: "message",
-    sidebarProps: {
-      displayText: "Message",
-      icon: <MessageOutlinedIcon />
-    }
-  },
-  {
-    path: "/logout",
+    path: "/dashboard/logout",
     element: <LogoutPage />,
     state: "logout",
     sidebarProps: {
