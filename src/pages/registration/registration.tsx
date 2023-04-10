@@ -10,9 +10,15 @@ import logoimage from '../../assets/images/G2I-logo.png';
 
 type Props = {};
 interface FormValues {
-  name: string;
+  firstName: string;
   email: string;
   password: string;
+  lastName: string;
+  country: string,
+  timeZone: string,
+  mobileNumber: number,
+  userType: number
+
 }
 interface loginForm{
   userName: string,
@@ -27,18 +33,28 @@ const Register = (props: Props) => {
     setValue(newValue);
   };
   const [values, setFormValues] = React.useState<FormValues>({
-    name: "",
+    firstName: "",
     email: "",
     password: "",
+    lastName: "NA",
+    country: "IN",
+    timeZone: "asia",
+    mobileNumber: 22,
+    userType: 2
   });
   const [loginvalues, setloginFormValues] = React.useState<loginForm>({
     userName: 'testid',
     loginPassword: '123456'
   })
   const [errors, setErrors] = React.useState<FormValues>({
-    name: "",
+    firstName: "",
     email: "",
     password: "",
+    lastName: "NA",
+    country: "NA",
+    timeZone: "NA",
+    mobileNumber: 123456789,
+    userType: 2
   });
   const [loginErrors, setloginErrors] = React.useState<loginForm>({
     userName: '',
@@ -80,32 +96,42 @@ const Register = (props: Props) => {
 
     if (validateForm()) {
       console.log("Form submitted successfully:", values);
-      history("/test");
+      history("/register-thankyou");
       setFormValues({
-        name: "",
+        firstName: "",
         email: "",
         password: "",
+        lastName: "NA",
+        country: "NA",
+        timeZone: "NA",
+        mobileNumber: 123456789,
+        userType: 2
       });
-      // try {
-      //   const response = await fetch("http://example.com/api/submit-form", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(values),
-      //   });
+      try {
+        const response = await fetch("http://13.233.223.217:2020/users/registration", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        });
 
-      //   const data = await response.json();
-      //   console.log("Form submitted successfully:", data);
-      //   setFormValues({
-      //     name: "",
-      //     email: "",
-      //     password: "",
-      //   });
+        const data = await response.json();
+        console.log("Form submitted successfully:", data);
+        setFormValues({
+          firstName: "",
+          email: "",
+          password: "",
+          lastName: "NA",
+          country: "NA",
+          timeZone: "NA",
+          mobileNumber: 22,
+          userType: 2
+        });
 
-      // } catch (error) {
-      //   console.error("Error submitting form:", error);
-      // }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      }
     }
   };
 
@@ -126,12 +152,18 @@ const Register = (props: Props) => {
     validateLoginForm();
   }
   const validateForm = (): boolean => {
-    const { name, email, password } = values;
-    const errors: FormValues = { name: "", email: "", password: "" };
+    const { firstName, email, password } = values;
+    const errors: FormValues = { firstName: "", email: "", password: "",
+    lastName: "NA",
+    country: "NA",
+    timeZone: "NA",
+    mobileNumber: 22,
+    userType: 2
+  };
     let isValid = true;
 
-    if (!name) {
-      errors.name = "Name is required";
+    if (!firstName) {
+      errors.firstName = "Name is required";
       isValid = false;
     }
 
@@ -203,12 +235,12 @@ const Register = (props: Props) => {
                 <p>Start learning and create your account</p>
         <div className="form-group">
           <input className="form-control" type="text"  placeholder="Full name" 
-                 id="name"
-                 name="name"
-                 value={values.name}
+                 id="firstName"
+                 name="firstName"
+                 value={values.firstName}
                  onChange={handleChange}
                 />
-                <p className='text-danger'>{errors.name}</p>
+                <p className='text-danger'>{errors.firstName}</p>
           </div>
       <div className="form-group">
         <input className="form-control" type="email" name="email" placeholder="Email" 
@@ -242,7 +274,7 @@ const Register = (props: Props) => {
         </form>
         </TabPanel>
         <TabPanel value="2">
-          <p>LogIn</p>
+        <h2 className='py-2 pull-left'>Welcome Back</h2>
           <form onSubmit={LoginSubmit}>
           <div className="form-group">
           <input className="form-control" type="text"  placeholder="User Name" 

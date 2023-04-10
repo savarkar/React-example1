@@ -2,6 +2,7 @@ import React from 'react';
 import Commonheader from '../../components/layout/header';
 import './allcourses.css'
 import dd from '../../assets/images/engineering-supplies-blueprint.png'
+import { Link } from 'react-router-dom';
 
 function Allcourses() {
   return (
@@ -58,7 +59,7 @@ function Allcourses() {
       <div className="card rounded shadow-sm border-0">
         <div className="card-body p-0"><img src={dd} alt="" className="img-fluid d-block mx-auto mb-3" />
           <div className='p-3 card-body-inner'>
-            <h5> <a href="#" className="text-dark">Topic 1</a></h5>
+          <h5> <Link className="text-dark" to="/qrcode">Topic 1</Link></h5>
           <p className="small text-muted font-italic">Teachers Name:</p>
           <div className='row s'>
                 <div className="col-md-6">1. Ramesh</div>
@@ -106,7 +107,7 @@ function Allcourses() {
       <div className="card rounded shadow-sm border-0">
         <div className="card-body p-0"><img src={dd} alt="" className="img-fluid d-block mx-auto mb-3" />
           <div className='p-3 card-body-inner'>
-            <h5> <a href="#" className="text-dark">Topic 1</a></h5>
+            <h5> <Link className="text-dark" to="/coursedetails">Topic 1</Link></h5>
           <p className="small text-muted font-italic">Teachers Name:</p>
           <div className='row s'>
                 <div className="col-md-6">1. Ramesh</div>

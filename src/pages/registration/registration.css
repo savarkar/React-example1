@@ -5,7 +5,14 @@
     padding: 20px;
     text-align: center;
     vertical-align: middle;
+    height: auto;
   }
+  @media screen and (min-width:900px) {
+    .register-photo .image-holder {
+        height: 700px;
+    }
+  }
+    
   .register-photo .image-holder h2{
     font-size:65px;
     color:#fff;

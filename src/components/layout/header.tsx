@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './header.css';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 type Props = {};
 
 function Commonheader(){
@@ -27,7 +28,8 @@ function Commonheader(){
       </form>
       <ul className="navbar-nav mb-2 mb-lg-0 ms-md-auto nav-fill">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+        <Link className='nav-link' to="/">Home</Link>
+          {/* <a className="nav-link active" aria-current="page" href="/">Home</a> */}
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Student</a>
