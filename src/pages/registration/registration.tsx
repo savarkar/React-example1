@@ -43,8 +43,8 @@ const Register = (props: Props) => {
     userType: 2
   });
   const [loginvalues, setloginFormValues] = React.useState<loginForm>({
-    userName: 'testid',
-    loginPassword: '123456'
+    userName: 'pabbu@gmail.com',
+    loginPassword: 'ASDFGJ'
   })
   const [errors, setErrors] = React.useState<FormValues>({
     firstName: "",
@@ -64,31 +64,35 @@ const Register = (props: Props) => {
       event.preventDefault();
       if (validateLoginForm()) {
         console.log("Login is success:", loginvalues);
-        history("/dashboard/student");
+        history("/dashboard");
         setloginFormValues({
         userName: "",
         loginPassword: "",
       });
       }
-      // try {
-      //   const response = await fetch("http://example.com/api/submit-form", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(loginvalues),
-      //   });
+      try {
+        let logindata = {
+          email: loginvalues.userName,
+          password: loginvalues.loginPassword
+        }
+        const response = await fetch("http://13.233.223.217:2020/students/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(logindata),
+        });
 
-      //   const data = await response.json();
-      //   console.log("Form submitted successfully:", data);
-      //   setloginFormValues({
-      //     userName: "",
-      //     loginPassword: "",
-      //   });
+        const data = await response.json();
+        console.log("Form submitted successfully:", data);
+        setloginFormValues({
+          userName: "",
+          loginPassword: "",
+        });
 
-      // } catch (error) {
-      //   console.error("Error submitting login form:", error);
-      // }
+      } catch (error) {
+        console.error("Error submitting login form:", error);
+      }
 
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -108,7 +112,7 @@ const Register = (props: Props) => {
         userType: 2
       });
       try {
-        const response = await fetch("http://13.233.223.217:2020/users/registration", {
+        const response = await fetch("http://13.233.223.217:2020/students/registration", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

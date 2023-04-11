@@ -23,7 +23,6 @@ const HomePage = (props: Props) => {
       </div>
       <div style={{display: "flex", justifyContent: "space-around", marginBottom: "15px"}}>
         {/* <DashboardCard cardName="My Courses" onClick="{learningHistory}" /> */}
-        <Link to = '/mylearnings'><button className='btn p-2 mt-4 btn-info custom-btn'>My Courses</button></Link>
 
       </div>
     </div>

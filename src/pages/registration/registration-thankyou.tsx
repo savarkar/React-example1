@@ -9,9 +9,9 @@ const Thankyou = (props: Props) => {
         <div className="wrapper-1">
           <div className="wrapper-2">
             <h1>Thank you !</h1>
-            <p>Thanks for Registration to our news letter.  </p>
+            <p>Thanks for Registration to our Global Genius Index.  </p>
             <p>you should receive a confirmation email soon  </p>
-            <a href='/' className="btn go-home">
+            <a href='/' className="btn btn-primary go-home">
             go Login
             </a>
           </div>
