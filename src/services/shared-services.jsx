@@ -37,6 +37,16 @@ class sharedService{
             throw error
         }
     }
+    async studentSubscription(data){
+        try {
+            const response = await this.httpClient.post("http://13.233.223.217:2020/student_subscriptions/createSubscription", data);
+        return response.json()    
+
+        }catch(error){
+            console.error(error)
+            throw error
+        }
+    }
 }
 
 export default sharedService;
