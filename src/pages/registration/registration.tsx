@@ -7,6 +7,9 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useNavigate } from "react-router-dom";
 import logoimage from '../../assets/images/G2I-logo.png';
+import PaymentProof from '../courses/payment-proof';
+//import { createGlobalState } from 'react-hooks-global-state';
+import useGlobalState from '../../services/GlobalState';
 
 type Props = {};
 interface FormValues {
@@ -20,18 +23,23 @@ interface FormValues {
   userType: number
 
 }
-interface loginForm{
+interface loginForm {
   userName: string,
   loginPassword: string
 }
 const Register = (props: Props) => {
-  const history = useNavigate();
+  const [name, setName] = useGlobalState("name");
+  const [profile, setProfile] = useGlobalState("profile");
+  console.log('test global state', profile);
 
+  const history = useNavigate();
+  const [logindata, setLoginData] = React.useState('');
   const [value, setValue] = React.useState('1');
 
-  const handleChangeTab= (event: React.SyntheticEvent, newValue: string) => {
+  const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
   const [values, setFormValues] = React.useState<FormValues>({
     firstName: "",
     email: "",
@@ -60,40 +68,48 @@ const Register = (props: Props) => {
     userName: '',
     loginPassword: ''
   });
-  const LoginSubmit = async (event: React.FormEvent<HTMLFormElement>)=>{
-      event.preventDefault();
-      if (validateLoginForm()) {
-        console.log("Login is success:", loginvalues);
-        history("/dashboard");
-        setloginFormValues({
+  const LoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      let logindata = {
+        email: loginvalues.userName,
+        password: loginvalues.loginPassword
+      }
+      const response = await fetch("http://13.233.223.217:2020/students/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(logindata),
+      });
+
+      const data = await response.json();
+      redirectDashBoard(data);
+      setloginFormValues({
         userName: "",
         loginPassword: "",
       });
-      }
-      try {
-        let logindata = {
-          email: loginvalues.userName,
-          password: loginvalues.loginPassword
-        }
-        const response = await fetch("http://13.233.223.217:2020/students/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(logindata),
-        });
+      parentToChild(data)
+    } catch (error) {
+      console.error("Error submitting login form:", error);
+    }
 
-        const data = await response.json();
-        console.log("Form submitted successfully:", data);
-        setloginFormValues({
-          userName: "",
-          loginPassword: "",
-        });
-
-      } catch (error) {
-        console.error("Error submitting login form:", error);
-      }
-
+  }
+  const redirectDashBoard =(data:any)=>{
+    if (validateLoginForm()) {
+      console.log("Login is success:", loginvalues);
+      setName(data);
+      setProfile(data.data);
+      console.log("Form submitted successfully:", data);
+      history("/dashboard");
+      setloginFormValues({
+        userName: "",
+        loginPassword: "",
+      });
+    }
+  }
+  const parentToChild = (data: any) => {
+    setLoginData(data);
   }
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -147,7 +163,7 @@ const Register = (props: Props) => {
     }));
     validateForm();
   };
-  const handleLoginChange= (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setloginFormValues((prevValues) => ({
       ...prevValues,
@@ -157,13 +173,16 @@ const Register = (props: Props) => {
   }
   const validateForm = (): boolean => {
     const { firstName, email, password } = values;
-    const errors: FormValues = { firstName: "", email: "", password: "",
-    lastName: "NA",
-    country: "NA",
-    timeZone: "NA",
-    mobileNumber: 22,
-    userType: 2
-  };
+    const errors: FormValues = {
+      firstName: "", 
+      email: "", 
+      password: "",
+      lastName: "NA",
+      country: "NA",
+      timeZone: "NA",
+      mobileNumber: 22,
+      userType: 2
+    };
     let isValid = true;
 
     if (!firstName) {
@@ -214,101 +233,102 @@ const Register = (props: Props) => {
 
 
   return (
-    
+
     <div className="container">
+      {/* <PaymentProof {...parentToChild}/> */}
       <div className="register-photo">
         <div className="form-container row d-flex justify-content-center mx-auto">
-            <div className="image-holder col-md-6">
-                <img src={logoimage} alt="earth" />  
-              <h2>Start Learning Now</h2>
-            </div>
-            <div className='right-section col-md-6'>
-     
+          <div className="image-holder col-md-6">
+            <img src={logoimage} alt="earth" />
+            <h2>Start Learning Now</h2>
+          </div>
+          <div className='right-section col-md-6'>
+
             <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
-            <Tab label="Create Accont" value="1" />
-            <Tab label="Login" value="2" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
-          
-        <form onSubmit={handleSubmit}>
-        <h4><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
-                <p>Start learning and create your account</p>
-        <div className="form-group">
-          <input className="form-control" type="text"  placeholder="Full name" 
-                 id="firstName"
-                 name="firstName"
-                 value={values.firstName}
-                 onChange={handleChange}
-                />
-                <p className='text-danger'>{errors.firstName}</p>
-          </div>
-      <div className="form-group">
-        <input className="form-control" type="email" name="email" placeholder="Email" 
-         id="email"
-         value={values.email}
-         onChange={handleChange}
-        />
-         <p className='text-danger'>{errors.email}</p>
-        </div>
-      <div className="form-group">
-        <input className="form-control" type="password" name="password" placeholder="Password" 
-          id="password"
-          value={values.password}
-          onChange={handleChange}
-        />
-         <p className='text-danger'>{errors.password}</p>
-        </div>
+              <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
+                    <Tab label="Create Accont" value="1" />
+                    <Tab label="Login" value="2" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
 
-      <div className="form-group">
-        <button className="btn btn-block" type="submit">Create Account</button></div>
-      <div className='mt-5 mb-3 well'>
-      <p className="text-divider"><span>Or Sign up with</span></p>
-        </div>
-        <div className="d-flex justify-content-around mt-5">
-        <img src="https://img.icons8.com/color/48/null/google-logo.png"/>
-            <img src="https://img.icons8.com/ios-filled/50/null/mac-os.png"/>
-        </div>
+                  <form onSubmit={handleSubmit}>
+                    <h4><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
+                    <p>Start learning and create your account</p>
+                    <div className="form-group">
+                      <input className="form-control" type="text" placeholder="Full name"
+                        id="firstName"
+                        name="firstName"
+                        value={values.firstName}
+                        onChange={handleChange}
+                      />
+                      <p className='text-danger'>{errors.firstName}</p>
+                    </div>
+                    <div className="form-group">
+                      <input className="form-control" type="email" name="email" placeholder="Email"
+                        id="email"
+                        value={values.email}
+                        onChange={handleChange}
+                      />
+                      <p className='text-danger'>{errors.email}</p>
+                    </div>
+                    <div className="form-group">
+                      <input className="form-control" type="password" name="password" placeholder="Password"
+                        id="password"
+                        value={values.password}
+                        onChange={handleChange}
+                      />
+                      <p className='text-danger'>{errors.password}</p>
+                    </div>
 
-        <div>
-        </div>
-        </form>
-        </TabPanel>
-        <TabPanel value="2">
-        <h2 className='py-2 pull-left'>Welcome Back</h2>
-          <form onSubmit={LoginSubmit}>
-          <div className="form-group">
-          <input className="form-control" type="text"  placeholder="User Name" 
-                 id="userName"
-                 name="userName"
-                 value={loginvalues.userName}
-                 onChange={handleLoginChange}
-                />
-                <p className='text-danger'>{loginErrors.userName}</p>
+                    <div className="form-group">
+                      <button className="btn btn-block" type="submit">Create Account</button></div>
+                    <div className='mt-5 mb-3 well'>
+                      <p className="text-divider"><span>Or Sign up with</span></p>
+                    </div>
+                    <div className="d-flex justify-content-around mt-5">
+                      <img src="https://img.icons8.com/color/48/null/google-logo.png" />
+                      <img src="https://img.icons8.com/ios-filled/50/null/mac-os.png" />
+                    </div>
+
+                    <div>
+                    </div>
+                  </form>
+                </TabPanel>
+                <TabPanel value="2">
+                  <h2 className='py-2 pull-left'>Welcome Back</h2>
+                  <form onSubmit={LoginSubmit}>
+                    <div className="form-group">
+                      <input className="form-control" type="text" placeholder="User Name"
+                        id="userName"
+                        name="userName"
+                        value={loginvalues.userName}
+                        onChange={handleLoginChange}
+                      />
+                      <p className='text-danger'>{loginErrors.userName}</p>
+                    </div>
+                    <div className="form-group">
+                      <input className="form-control" type="loginPassword" name="loginPassword" placeholder="Password"
+                        id="loginPassword"
+                        value={loginvalues.loginPassword}
+                        onChange={handleLoginChange}
+                      />
+                      <p className='text-danger'>{loginErrors.loginPassword}</p>
+                    </div>
+                    <div className="form-group">
+                      <button className="btn btn-block" type="submit">Login</button></div>
+                  </form>
+                </TabPanel>
+              </TabContext>
+            </Box>
+
           </div>
-      <div className="form-group">
-        <input className="form-control" type="loginPassword" name="loginPassword" placeholder="Password" 
-         id="loginPassword"
-         value={loginvalues.loginPassword}
-         onChange={handleLoginChange}
-        />
-         <p className='text-danger'>{loginErrors.loginPassword}</p>
         </div>
-        <div className="form-group">
-        <button className="btn btn-block" type="submit">Login</button></div>
-          </form>
-        </TabPanel>
-      </TabContext>
-    </Box>
-   
-    </div>
-    </div>
-    </div>
+      </div>
     </div>
   );
- };
+};
 
 export default Register;

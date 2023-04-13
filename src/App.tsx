@@ -13,6 +13,7 @@ import Qrcodes from "./pages/courses/qrcode";
 import HomePage from "./pages/home/HomePage";
 import Student from "./pages/student/Student";
 import PaymentProof from "./pages/courses/payment-proof";
+import CourseSuccss from "./pages/registration/course-success";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/qrcode" element={<Qrcodes />}></Route> 
       <Route path="/proof" element={<PaymentProof />}></Route> 
       <Route path="/register-thankyou" element={<Thankyou />}></Route>
+      <Route path="/course-success" element={<CourseSuccss />}></Route>
         {/* <Route path="/register" element={<Register />}></Route>
         
         <Route path="/register-thankyou" element={<Thankyou />}></Route>

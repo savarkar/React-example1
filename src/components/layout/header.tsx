@@ -44,6 +44,22 @@ function Commonheader(){
           <i className="fa fa-globe" aria-hidden="true"></i>
           </a>
         </li>
+        <li className="nav-item">
+        <ul className="navbar-nav ml-auto">
+      <li className="nav-item">
+        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      John Doe
+    </a>
+
+        <div className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a className="dropdown-item" href="#"> Edit profile</a>
+          <a className="dropdown-item" href="#"> View profile </a>
+          <a className="dropdown-item" href="/"> logout</a>
+        </div>
+      </li>
+    </ul>
+
+        </li>
       </ul>
     </div>
   </div>

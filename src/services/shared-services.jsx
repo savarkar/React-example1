@@ -37,6 +37,39 @@ class sharedService{
             throw error
         }
     }
+    async GET(url){
+        try {
+            const response = await this.httpClient.get(url);
+        return response.json()    
+
+        }catch(error){
+            console.error(error)
+            throw error
+        }
+    }
+    async POST(url, data){
+        try {
+        //     const response = await this.httpClient.post(url, data, {
+        //         headers: {
+        //             'Content-type': 'application/json'
+        //         }	
+        //     });
+        // return response.json()  
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+  
+          const resp = await response.json();  
+          return resp;
+        }catch(error){
+            console.error(error)
+            throw error
+        }
+    }
     async studentSubscription(data){
         try {
             const response = await this.httpClient.post("http://13.233.223.217:2020/student_subscriptions/createSubscription", data);

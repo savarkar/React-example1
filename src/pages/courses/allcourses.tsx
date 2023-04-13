@@ -2,18 +2,22 @@ import React, {useState, useEffect} from 'react';
 import Commonheader from '../../components/layout/header';
 import './allcourses.css'
 import dd from '../../assets/images/engineering-supplies-blueprint.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import sharedService from '../../services/shared-services';
 import FetchClient from '../../services/FetchClient';
+import useGlobalState from '../../services/GlobalState';
 
 type Props = {};
 
 //function Allcourses() {
   const Allcourses = (props: Props) => {
+    const history = useNavigate();
   const [courses, setCourses] = useState([])
-
+  const [courseobject, setCourseobject] = useGlobalState("courseobject");
+  const [profile] = useGlobalState('profile');
+  const sharedservice = new sharedService(FetchClient)
   useEffect(()=>{
-      const sharedservice = new sharedService(FetchClient)
+    
       const getcourses= async()=>{
         try{
         const coursesdata = await sharedservice.getAllCourses();
@@ -27,6 +31,33 @@ type Props = {};
       getcourses();
   }, []
   )
+  const goToQrCode =(data:any)=>{
+    setCourseobject(data);
+    checkStudentSubscription(data);
+
+   // history("/qrcode");
+
+  }
+  const checkStudentSubscription= async(data:any)=>{
+    let obj={
+      studentID:profile._id,
+      courseID:data._id
+    }
+    let url= "http://13.233.223.217:2020/student_subscriptions/checkStudentSubscription";
+    try{
+    const data = await sharedservice.POST(url, obj);
+    console.log('all courses data....', data)
+    if(data.success){
+       history("/coursedetails");
+    }
+    else{
+       history("/qrcode");
+    }
+  }
+  catch(error){
+    console.log(error)
+  }
+  };
 
   return (
     <div>
@@ -83,10 +114,17 @@ type Props = {};
         <div className="card-body p-0"><img src={dd} alt="" className="img-fluid d-block mx-auto mb-3" />
           <div className='p-3 card-body-inner'>
         
-          <h5> <Link className="text-dark" to="/qrcode">
+           <h5 onClick={() => goToQrCode(item)}>
             {item.courseName}         
-            </Link></h5>
-       
+            </h5> 
+ {/* <div>
+      <button onClick={() => goToQrCode(item)}>Click me</button>
+    </div> */}
+
+        {/* <button onClick={()=>goToQrCode(item.courseName)}>
+  Say Hello
+</button> */}
+
           <p className="small text-muted font-italic">Teachers Name:</p>
           <div className='row s'>
                 <div className="col-md-6">1. Ramesh</div>

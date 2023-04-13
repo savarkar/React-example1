@@ -12,7 +12,7 @@ const Thankyou = (props: Props) => {
             <p>Thanks for Registration to our Global Genius Index.  </p>
             <p>you should receive a confirmation email soon  </p>
             <a href='/' className="btn btn-primary go-home">
-            go Login
+            GO 
             </a>
           </div>
           {/* <div className="footer-like">

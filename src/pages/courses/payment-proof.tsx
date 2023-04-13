@@ -1,63 +1,127 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Commonheader from '../../components/layout/header';
 import { json } from 'stream/consumers';
+import * as React from 'react';
+import { useNavigate } from "react-router-dom";
+import useGlobalState from '../../services/GlobalState';
 
-function Form() {
+type Props = {};
+const PaymentProof = (props:Props) => {
+//function Form() {
+  const [profile] = useGlobalState('profile');
+  const [courseobject] = useGlobalState('courseobject');
+  
+  console.log("dashbaord profile", profile);
+
+  const history = useNavigate();
   const [text, setText] = useState('');
   const [file, setFile] = useState<File | null>(null);
-
+  const [base64, setBase64 ]= useState('');
   const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
-
+console.log('test props', props);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      setFile(event.target.files  [0]);
+      setFile(event.target.files[0]);
     }
-    
-    console.log(file, setFile, 'fileeeeeeeeeeeeee')
- 
-    const formData = new FormData();
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-       reader.onloadend = () => {
-        let abc = reader.result;
-       }
-    }
+    // if (file) {
+    //   const reader = new FileReader();
+    //   reader.readAsDataURL(file);
+    //    reader.onloadend = () => {
+    //     console.log(reader, 'fileeeeeeeeeeeeee')
+    //    }
+    // }
+   // handleSubmit(event)
+  }
+const getData =(e:any)=>{
+ // console.log('test', e)
+  setBase64(e);
+  createSubscription(e)
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const reader = new FileReader();
-    const formData = new FormData();
-    formData.append('transactionId', text);
-    formData.append("studentID", "stu-123");
-    formData.append("courseID", "scoures-123asa");
-    formData.append("startDate", "10-12-2023");
-    formData.append("endDate", "10-12-2024");
-    formData.append("courseFee", "100");   
-    formData.append('paymentProofDoc', reader.result as string);
-      //};
-//   const abc=reader.result as string;
-//   console.log(abc, 'll')
-//  formData.append('paymentProofDoc', abc);
-//    formData.append('paymentProofDoc', reader.result as string)
-//  }
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        let abc= reader.result;
+        if(reader.result)
+        getData(reader.result)
+      };
+    }
 
-    fetch('http://13.233.223.217:2020/student_subscriptions/createSubscription', {
-      method: 'POST',
-      body: formData,
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+   
   };
+function createSubscription(base64:any){
+  
+  // const formData = new FormData();
+  // formData.append('transactionId', text);
+  // formData.append("studentID", "stu-123");
+  // formData.append("courseID", "scoures-123asa");
+  // formData.append("startDate", "10-12-2023");
+  // formData.append("endDate", "10-12-2024");
+  // formData.append("courseFee", "100");   
+  // formData.append('paymentProofDoc', base64);
+  //  console.log('xyz', base64)
+    // const obj={
+    //   paymentRefID: text,
+    //   studentID: "stu-123",
+    //   courseID: "scoures-123asa",
+    //   startDate: "10-12-2023",
+    //   endDate: "10-12-2024",
+    //   courseFee: 100,
+    //   paymentProofDoc: base64
+    // }
+//     let obj={
+//   studentID:"stu-123",
+//   courseID: "scoures-123asa",
+//   startDate:"10-12-2023",
+//   endDate: "10-12-2024",
+//   courseFee: 100,
+//   paymentRefID: "1234567890",
+//   paymentProofDoc: "base64:data"
+// }
 
+//   fetch('http://13.233.223.217:2020/student_subscriptions/createSubscription', {
+//     method: 'POST',
+//    // body: formData, 
+//     body: JSON.stringify(obj),
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data);
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
+  
+    try {
+      let obj={
+        studentID:profile._id,
+        courseID: courseobject._id,
+        startDate:"10-12-2023",
+        endDate: "10-12-2024",
+        courseFee: 100,
+        paymentRefID: text,
+        paymentProofDoc: base64
+      }
+      const response = fetch("http://13.233.223.217:2020/student_subscriptions/createSubscription", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj),
+      });
+      const data = response;
+      console.log("Form submitted successfully:", data);
+      history("/course-success");
+  
+    } catch (error) {
+      console.error("Error submitting login form:", error);
+    }
+}
   return (
     <div>
     <Commonheader />
@@ -119,7 +183,7 @@ function Form() {
    
 
 
-    <form onSubmit={handleSubmit}>
+    {/* <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="text">Text:</label>
         <input
@@ -140,9 +204,9 @@ function Form() {
         />
       </div>
       <button type="submit">Submit</button>
-    </form>
+    </form> */}
     </div>
   );
 }
 
-export default Form;
+export default PaymentProof;

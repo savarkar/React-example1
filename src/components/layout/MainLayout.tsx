@@ -6,8 +6,13 @@ import Sidebar from "../common/Sidebar";
 import Topbar from "../common/Topbar";
 import Sidebox from "../common/Sidebox";
 import backgroundImage from "../../assets/images/background.gif";
+import useGlobalState from '../../services/GlobalState';
 
 const MainLayout = () => {
+  const [name] = useGlobalState('name');
+  console.log("dashbaord page", name);
+  const [profile] = useGlobalState('profile');
+  console.log("dashbaord profile", profile);
   return (
     <Box sx={{ display: "flex" }}>
       <Topbar />
