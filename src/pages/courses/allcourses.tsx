@@ -40,10 +40,10 @@ type Props = {};
   }
   const checkStudentSubscription= async(data:any)=>{
     let obj={
-      studentID:profile._id,
-      courseID:data._id
+      studentID:profile.id,
+      courseID:data.id
     }
-    let url= "http://13.233.223.217:2020/student_subscriptions/checkStudentSubscription";
+    let url= "http://13.233.223.217:2020/api/v1/student_subscriptions/checkStudentSubscription";
     try{
     const data = await sharedservice.POST(url, obj);
     console.log('all courses data....', data)
@@ -64,8 +64,11 @@ type Props = {};
       <Commonheader />
       <div className='bg-home'>
       <div className="container h-100 mt-5 p-3">
+      <div className='border rounded-circle text-center' style={{width:'40px', height:'40px'}}>
+       <div className='left-angle'> <i className="fa fa-angle-left"></i></div>
+         </div> 
 <div className="d-flex flex-column justify-content-center h-100 ">
-  <span style={{width:'40px',height:'40px'}} className='border rounded-circle p-2 text-center'><i className="fa fa-angle-left"></i></span>
+  {/* <span style={{width:'40px',height:'40px'}} className='border rounded-circle p-2 text-center'><i className="fa fa-angle-left"></i></span> */}
     <h2 className='mt-5'>Course Name</h2>
     <p>Course Summary</p>
     <div className='col-md-4'>
@@ -75,8 +78,8 @@ type Props = {};
 </div>  </div>
 <div className='container mt-5'>
     <div className='row'>
-      <div className="col-md-1 text-theme"><h6>Filter by</h6></div>
-      <div className="col-md-1">
+      <div className="col-lg-1 col-md-2 text-theme"><h6>Filter by</h6></div>
+      <div className="col-lg-1 col-md-2">
       <div className="dropdown">
     <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
       Topics
@@ -87,10 +90,8 @@ type Props = {};
       <li><a className="dropdown-item" href="#">Link 3</a></li>
     </ul>
   </div>
-
-
       </div>
-      <div className="col-sm-2">
+      <div className="col-lg-2 col-md-2">
       <div className="dropdown">
     <button type="button" className="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
       Sory by

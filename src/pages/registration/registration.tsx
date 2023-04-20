@@ -19,7 +19,7 @@ interface FormValues {
   lastName: string;
   country: string,
   timeZone: string,
-  mobileNumber: number,
+  mobileNumber: string,
   userType: number
 
 }
@@ -47,21 +47,21 @@ const Register = (props: Props) => {
     lastName: "NA",
     country: "IN",
     timeZone: "asia",
-    mobileNumber: 22,
+    mobileNumber: "",
     userType: 2
   });
   const [loginvalues, setloginFormValues] = React.useState<loginForm>({
-    userName: 'pabbu@gmail.com',
-    loginPassword: 'ASDFGJ'
+    userName: 'pabbu@test.com',
+    loginPassword: 'pabbu1234'
   })
-  const [errors, setErrors] = React.useState<FormValues>({
+  const [errors, setErrors] = React.useState({
     firstName: "",
     email: "",
     password: "",
     lastName: "NA",
     country: "NA",
     timeZone: "NA",
-    mobileNumber: 123456789,
+    mobileNumber: '',
     userType: 2
   });
   const [loginErrors, setloginErrors] = React.useState<loginForm>({
@@ -75,7 +75,7 @@ const Register = (props: Props) => {
         email: loginvalues.userName,
         password: loginvalues.loginPassword
       }
-      const response = await fetch("http://13.233.223.217:2020/students/login", {
+      const response = await fetch("http://13.233.223.217:2020/api/v1/students/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,7 +116,6 @@ const Register = (props: Props) => {
 
     if (validateForm()) {
       console.log("Form submitted successfully:", values);
-      history("/register-thankyou");
       setFormValues({
         firstName: "",
         email: "",
@@ -124,11 +123,11 @@ const Register = (props: Props) => {
         lastName: "NA",
         country: "NA",
         timeZone: "NA",
-        mobileNumber: 123456789,
+        mobileNumber: "",
         userType: 2
       });
       try {
-        const response = await fetch("http://13.233.223.217:2020/students/registration", {
+        const response = await fetch("http://13.233.223.217:2020/api/v1/students/registration", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -137,6 +136,7 @@ const Register = (props: Props) => {
         });
 
         const data = await response.json();
+
         console.log("Form submitted successfully:", data);
         setFormValues({
           firstName: "",
@@ -145,9 +145,12 @@ const Register = (props: Props) => {
           lastName: "NA",
           country: "NA",
           timeZone: "NA",
-          mobileNumber: 22,
+          mobileNumber: "",
           userType: 2
         });
+        if(data.data){
+          history("/register-thankyou");
+        }
 
       } catch (error) {
         console.error("Error submitting form:", error);
@@ -156,7 +159,7 @@ const Register = (props: Props) => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { name, value, checked } = event.target;
     setFormValues((prevValues) => ({
       ...prevValues,
       [name]: value,
@@ -171,16 +174,16 @@ const Register = (props: Props) => {
     }));
     validateLoginForm();
   }
-  const validateForm = (): boolean => {
-    const { firstName, email, password } = values;
-    const errors: FormValues = {
+const validateForm = (): boolean => {
+    const { firstName, email, mobileNumber, password } = values;
+    const errors = {
       firstName: "", 
       email: "", 
       password: "",
       lastName: "NA",
       country: "NA",
       timeZone: "NA",
-      mobileNumber: 22,
+      mobileNumber: '',
       userType: 2
     };
     let isValid = true;
@@ -203,6 +206,13 @@ const Register = (props: Props) => {
       isValid = false;
     } else if (password.length < 6) {
       errors.password = "Password must be at least 6 characters long";
+      isValid = false;
+    }
+    if (!mobileNumber) {
+      errors.mobileNumber = "Mobile Number is required";
+      isValid = false;
+    } else if (mobileNumber.length < 10) {
+      errors.mobileNumber = "Mobile Number must be 10 Numbers long";
       isValid = false;
     }
 
@@ -261,24 +271,28 @@ const Register = (props: Props) => {
                       <input className="form-control" type="text" placeholder="Full name"
                         id="firstName"
                         name="firstName"
-                        value={values.firstName}
-                        onChange={handleChange}
+                        value={values.firstName} onBlur={handleChange} onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.firstName}</p>
                     </div>
                     <div className="form-group">
                       <input className="form-control" type="email" name="email" placeholder="Email"
                         id="email"
-                        value={values.email}
-                        onChange={handleChange}
+                         value={values.email} onBlur={handleChange} onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.email}</p>
                     </div>
                     <div className="form-group">
+                      <input className="form-control" type="text" name="mobileNumber" placeholder="Mobile Number"
+                        id="mobileNumber"
+                         value={values.mobileNumber} onBlur={handleChange} onChange={handleChange}
+                      />
+                      <p className='text-danger'>{errors.mobileNumber}</p>
+                    </div>
+                    <div className="form-group">
                       <input className="form-control" type="password" name="password" placeholder="Password"
                         id="password"
-                        value={values.password}
-                        onChange={handleChange}
+                        value={values.password} onBlur={handleChange} onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.password}</p>
                     </div>

@@ -84,7 +84,7 @@ function createSubscription(base64:any){
 //   paymentProofDoc: "base64:data"
 // }
 
-//   fetch('http://13.233.223.217:2020/student_subscriptions/createSubscription', {
+//   fetch('http://13.233.223.217:2020/api/v1/student_subscriptions/createSubscription', {
 //     method: 'POST',
 //    // body: formData, 
 //     body: JSON.stringify(obj),
@@ -99,15 +99,15 @@ function createSubscription(base64:any){
   
     try {
       let obj={
-        studentID:profile._id,
-        courseID: courseobject._id,
+        studentID:profile.id,
+        courseID: courseobject.id,
         startDate:"10-12-2023",
         endDate: "10-12-2024",
         courseFee: 100,
         paymentRefID: text,
         paymentProofDoc: base64
       }
-      const response = fetch("http://13.233.223.217:2020/student_subscriptions/createSubscription", {
+      const response = fetch("http://13.233.223.217:2020/api/v1/student_subscriptions/createSubscription", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

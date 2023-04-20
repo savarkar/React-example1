@@ -9,7 +9,7 @@ class sharedService{
 
     async register(data){
         try {
-            const response = await this.httpClient.post("http://13.233.223.217:2020/students/registration", data)
+            const response = await this.httpClient.post("http://13.233.223.217:2020/api/v1/students/registration", data)
         return response.json()    
 
         }catch(error){
@@ -19,7 +19,7 @@ class sharedService{
     }
     async login(data){
         try {
-            const response = await this.httpClient.post("http://13.233.223.217:2020/students/login", data)
+            const response = await this.httpClient.post("http://13.233.223.217:2020/api/v1/students/login", data)
         return response.json()    
         }
         catch(error){
@@ -29,7 +29,7 @@ class sharedService{
     }
     async getAllCourses(){
         try {
-            const response = await this.httpClient.get("http://13.233.223.217:2020/courses/getAllCourses");
+            const response = await this.httpClient.get("http://13.233.223.217:2020/api/v1/courses/getAllCourses");
         return response.json()    
 
         }catch(error){
@@ -72,7 +72,7 @@ class sharedService{
     }
     async studentSubscription(data){
         try {
-            const response = await this.httpClient.post("http://13.233.223.217:2020/student_subscriptions/createSubscription", data);
+            const response = await this.httpClient.post("http://13.233.223.217:2020/api/v1/student_subscriptions/createSubscription", data);
         return response.json()    
 
         }catch(error){

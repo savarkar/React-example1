@@ -131,38 +131,196 @@ import TabPanel from '@mui/lab/TabPanel';
       <li className="col-12 col-md-6 col-lg-3">
           <div className="cnt-block equal-hight" >
             <figure><img src="http://www.webcoderskull.com/img/team4.png" className="img-responsive" alt=""/></figure>
-            <h3><a href="http://www.webcoderskull.com/">Web coder skull</a></h3>
-            <p>Freelance Web Developer</p>
+            <h3><a href="http://www.webcoderskull.com/">Teachers Name</a></h3>
+            <p>Professor in Physics </p>
           </div>
       </li>
       <li className="col-12 col-md-6 col-lg-3">
           <div className="cnt-block equal-hight">
             <figure><img src="http://www.webcoderskull.com/img/team1.png" className="img-responsive" alt=""/></figure>
-            <h3><a href="#">Kappua </a></h3>
-            <p>Freelance Web Developer</p>
+            <h3><a href="#">Teachers Name </a></h3>
+            <p>Professor in Physics </p>
           </div>
       </li>
       <li className="col-12 col-md-6 col-lg-3">
           <div className="cnt-block equal-hight">
             <figure><img src="http://www.webcoderskull.com/img/team4.png" className="img-responsive" alt="" /></figure>
-            <h3><a href="http://www.webcoderskull.com/">Manish </a></h3>
-            <p>Freelance Web Developer</p>
+            <h3><a href="http://www.webcoderskull.com/">Teachers Name </a></h3>
+            <p>Professor in Physics </p>
           </div>
        </li>
       <li className="col-12 col-md-6 col-lg-3">
           <div className="cnt-block equal-hight" >
             <figure><img src="http://www.webcoderskull.com/img/team2.png" className="img-responsive" alt="" /></figure>
-            <h3><a href="http://www.webcoderskull.com/">Atul </a></h3>
-            <p>Freelance Web Developer</p>
+            <h3><a href="http://www.webcoderskull.com/">Teachers Name </a></h3>
+            <p>Professor in Physics </p>
           </div>
       </li>
     </ul>
   </div>
-</section>
+   </section>
 
 </div>
+<div className="container bg-light p-5">
+<div className="ibox-content forum-container">
+
+<div className="forum-title mb-4">
+    <h3 className='text-center'>Syllabus</h3>
+</div>
+
+<div className="forum-item active">
+    <div className="row border p-2 rounded border-dark mb-4">
+    <div className="col-md-2 forum-info text-primary-emphasis">
+            <span className="views-number">
+                Week
+            </span>
+            <div>
+                <p className='text-bold h2'>1</p>
+            </div>
+        </div>
+        <div className="col-md-8">
+            <p className="h4">Chapter 1</p>
+            <div className="forum-sub-title">Summary</div>
+        </div>
+
+        <div className="col-md-2 forum-info">
+            <span className="views-number h6">
+                Durtion: 10 min
+            </span>
+        </div>
+    </div>
+    <div className="row border p-2 rounded border-dark mb-4">
+    <div className="col-md-2 forum-info text-primary-emphasis">
+            <span className="views-number">
+                Week
+            </span>
+            <div>
+                <p className='text-bold h2'>2</p>
+            </div>
+        </div>
+        <div className="col-md-8">
+            <p className="h4">Chapter 2</p>
+            <div className="forum-sub-title">Summary</div>
+        </div>
+
+        <div className="col-md-2 forum-info">
+            <span className="views-number h6">
+                Durtion: 10 min
+            </span>
+        </div>
     </div>
     
+</div>
+</div>
+
+    </div>
+
+
+    <div className="wrapper bg-white rounded shadow">
+    <div className="h2 text-center fw-bold mb-5">Frequently Asked Questions</div>
+    {/* <div className="h3 text-primary text-center">How can we help you?</div> */}
+    {/* <div className="d-flex justify-content-center">
+        <div className="search w-75 d-flex align-items-center"> <span className="fas fa-search text-dark"></span> 
+        <input type="text" className="form-control" placeholder="Describe your issue" />
+        </div>
+    </div> */}
+    <div className="accordion accordion-flush border-top border-start border-end" id="myAccordion">
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"> When will I have access to the lectures and assignments? </button>
+            </h2>
+            <div id="flush-collapseOne" className="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
+                data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">Adding Snippets</a></li>
+                        <li><a href="#">Accessing Color Palette</a></li>
+                        <li><a href="#">Searching Snippets</a></li>
+                        <li><a href="#">How to use online editor tools</a></li>
+                        <li><a href="#">Upgrading Pro</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"> What will I get if I purchase the Certificate? </button>
+            </h2>
+            <div id="flush-collapseTwo" className="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
+                data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">How to upgrade to pro</a></li>
+                        <li><a href="#">Benifits of Pro</a></li>
+                        <li><a href="#">Payment methods to get Pro</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"> BBBootstrap Tools </button>
+            </h2>
+            <div id="flush-collapseThree" className="accordion-collapse collapse border-0"
+                aria-labelledby="flush-headingOne" data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">How to use Pro Online Editor</a></li>
+                        <li><a href="#">Know Gradient generator</a></li>
+                        <li><a href="#">Using Beautifier</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"> Download Snippets </button>
+            </h2>
+            <div id="flush-collapseFour" className="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
+                data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">How to download snippets</a></li>
+                        <li><a href="#">Donate to Author</a></li>
+                        <li><a href="#">Donation methods</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"> BBBootstrap Icons </button>
+            </h2>
+            <div id="flush-collapseFive" className="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
+                data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">Adding icons to snippets</a></li>
+                        <li><a href="#">Fontawesome Icons</a></li>
+                        <li><a href="#">Material Design</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div className="accordion-item">
+            <h2 className="accordion-header" id="flush-headingOne">
+                <button className="accordion-button collapsed border-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"> Policy & copyrights </button>
+            </h2>
+            <div id="flush-collapseSix" className="accordion-collapse collapse border-0" aria-labelledby="flush-headingOne"
+                data-bs-parent="#myAccordion">
+                <div className="accordion-body p-0">
+                    <ul className="list-unstyled m-0">
+                        <li><a href="#">BBBootstrap Guidelines</a></li>
+                        <li><a href="#">BBBootstrap Policies</a></li>
+                        <li><a href="#">Copyright and right management</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
   </>
 )
 }
