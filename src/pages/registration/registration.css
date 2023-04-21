@@ -171,3 +171,12 @@ ul.nav.nav-tabs {
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
   border-bottom: 2px solid;
 }
+.p-relative{
+  position: relative;
+}
+.viewpsw{
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}

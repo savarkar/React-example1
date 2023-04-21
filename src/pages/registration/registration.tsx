@@ -28,7 +28,9 @@ interface loginForm {
   loginPassword: string
 }
 const Register = (props: Props) => {
+
   const [name, setName] = useGlobalState("name");
+  const [isRevealPwd, setIsRevealPwd] = React.useState(false);
   const [profile, setProfile] = useGlobalState("profile");
   console.log('test global state', profile);
 
@@ -39,7 +41,6 @@ const Register = (props: Props) => {
   const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
   const [values, setFormValues] = React.useState<FormValues>({
     firstName: "",
     email: "",
@@ -158,7 +159,7 @@ const Register = (props: Props) => {
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: any) => {
     const { name, value, checked } = event.target;
     setFormValues((prevValues) => ({
       ...prevValues,
@@ -289,11 +290,21 @@ const validateForm = (): boolean => {
                       />
                       <p className='text-danger'>{errors.mobileNumber}</p>
                     </div>
-                    <div className="form-group">
-                      <input className="form-control" type="password" name="password" placeholder="Password"
-                        id="password"
+                    <div className="form-group p-relative">
+                      <input className="form-control " name="password" placeholder="Password"
+                        id="password"  type={isRevealPwd ? "text" : "password"}
                         value={values.password} onBlur={handleChange} onChange={handleChange}
                       />
+
+  <button className="btn btn-link viewpsw" onClick={() => setIsRevealPwd(prevState => !prevState)} >
+    {isRevealPwd ? 
+  <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
+} </button>
+
+                      {/* <a href="#"  onClick={() => {
+            setShowPin(!showPin);
+          }}></a> 
+          {showPin ? 'Skjul' : 'Vis'}{' '} <i className="fa fa-eye" aria-hidden="true"></i> */}
                       <p className='text-danger'>{errors.password}</p>
                     </div>
 
