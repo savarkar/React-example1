@@ -31,6 +31,7 @@ const Register = (props: Props) => {
 
   const [name, setName] = useGlobalState("name");
   const [isRevealPwd, setIsRevealPwd] = React.useState(false);
+  const [isLoginRevealPwd, setIsLoginRevealPwd] = React.useState(false);
   const [profile, setProfile] = useGlobalState("profile");
   console.log('test global state', profile);
 
@@ -334,12 +335,24 @@ const validateForm = (): boolean => {
                       />
                       <p className='text-danger'>{loginErrors.userName}</p>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group d-none">
                       <input className="form-control" type="loginPassword" name="loginPassword" placeholder="Password"
                         id="loginPassword"
                         value={loginvalues.loginPassword}
                         onChange={handleLoginChange}
                       />
+                      <p className='text-danger'>{loginErrors.loginPassword}</p>
+                    </div>
+                    <div className="form-group p-relative">
+                      <input className="form-control " name="loginPassword" placeholder="Password"
+                        id="loginPassword"  type={isLoginRevealPwd ? "text" : "password"}
+                        value={loginvalues.loginPassword} onBlur={handleChange} onChange={handleChange}
+                      />
+
+  <button className="btn btn-link viewpsw" type='button' onClick={() => setIsLoginRevealPwd(prevState => !prevState)} >
+    {isLoginRevealPwd ? 
+  <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
+} </button>
                       <p className='text-danger'>{loginErrors.loginPassword}</p>
                     </div>
                     <div className="form-group">
