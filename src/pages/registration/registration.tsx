@@ -97,7 +97,7 @@ const Register = (props: Props) => {
     }
 
   }
-  const redirectDashBoard =(data:any)=>{
+  const redirectDashBoard = (data: any) => {
     if (validateLoginForm()) {
       console.log("Login is success:", loginvalues);
       setName(data);
@@ -150,7 +150,7 @@ const Register = (props: Props) => {
           mobileNumber: "",
           userType: 2
         });
-        if(data.data){
+        if (data.data) {
           history("/register-thankyou");
         }
 
@@ -176,11 +176,11 @@ const Register = (props: Props) => {
     }));
     validateLoginForm();
   }
-const validateForm = (): boolean => {
+  const validateForm = (): boolean => {
     const { firstName, email, mobileNumber, password } = values;
     const errors = {
-      firstName: "", 
-      email: "", 
+      firstName: "",
+      email: "",
       password: "",
       lastName: "NA",
       country: "NA",
@@ -267,9 +267,9 @@ const validateForm = (): boolean => {
                 <TabPanel value="1">
 
                   <form onSubmit={handleSubmit}>
-                    <h4><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
-                    <p>Start learning and create your account</p>
-                    <div className="form-group">
+                    <h4 className='py-1 pt-3 fw-medium text-start fs-5 theme-color'><strong>Welcome to Global Genius Index(G2I)</strong> </h4>
+                    <p className='text-start'>Start learning and create your account</p>
+                    <div className="form-group mt-3">
                       <input className="form-control" type="text" placeholder="Full name"
                         id="firstName"
                         name="firstName"
@@ -280,27 +280,27 @@ const validateForm = (): boolean => {
                     <div className="form-group">
                       <input className="form-control" type="email" name="email" placeholder="Email"
                         id="email"
-                         value={values.email} onBlur={handleChange} onChange={handleChange}
+                        value={values.email} onBlur={handleChange} onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.email}</p>
                     </div>
                     <div className="form-group">
                       <input className="form-control" type="text" name="mobileNumber" placeholder="Mobile Number"
                         id="mobileNumber"
-                         value={values.mobileNumber} onBlur={handleChange} onChange={handleChange}
+                        value={values.mobileNumber} onBlur={handleChange} onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.mobileNumber}</p>
                     </div>
                     <div className="form-group p-relative">
                       <input className="form-control " name="password" placeholder="Password"
-                        id="password"  type={isRevealPwd ? "text" : "password"}
+                        id="password" type={isRevealPwd ? "text" : "password"}
                         value={values.password} onBlur={handleChange} onChange={handleChange}
                       />
 
-  <button className="btn btn-link viewpsw" onClick={() => setIsRevealPwd(prevState => !prevState)} >
-    {isRevealPwd ? 
-  <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
-} </button>
+                      <button className="btn btn-link viewpsw" onClick={() => setIsRevealPwd(prevState => !prevState)} >
+                        {isRevealPwd ?
+                          <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
+                        } </button>
 
                       {/* <a href="#"  onClick={() => {
             setShowPin(!showPin);
@@ -310,7 +310,8 @@ const validateForm = (): boolean => {
                     </div>
 
                     <div className="form-group">
-                      <button className="btn btn-block" type="submit">Create Account</button></div>
+                      <button className="btn btn-block" type="submit">Create Account</button>
+                    </div>
                     <div className='mt-5 mb-3 well'>
                       <p className="text-divider"><span>Or Sign up with</span></p>
                     </div>
@@ -324,10 +325,10 @@ const validateForm = (): boolean => {
                   </form>
                 </TabPanel>
                 <TabPanel value="2">
-                  <h2 className='py-2 pull-left'>Welcome Back</h2>
+                  <h2 className='py-4 fw-medium text-start fs-5 theme-color'>Welcome Back</h2>
                   <form onSubmit={LoginSubmit}>
                     <div className="form-group">
-                      <input className="form-control" type="text" placeholder="User Name"
+                      <input className="form-control" type="text" placeholder="Email"
                         id="userName"
                         name="userName"
                         value={loginvalues.userName}
@@ -345,18 +346,29 @@ const validateForm = (): boolean => {
                     </div>
                     <div className="form-group p-relative">
                       <input className="form-control " name="loginPassword" placeholder="Password"
-                        id="loginPassword"  type={isLoginRevealPwd ? "text" : "password"}
+                        id="loginPassword" type={isLoginRevealPwd ? "text" : "password"}
                         value={loginvalues.loginPassword} onBlur={handleChange} onChange={handleChange}
                       />
 
-  <button className="btn btn-link viewpsw" type='button' onClick={() => setIsLoginRevealPwd(prevState => !prevState)} >
-    {isLoginRevealPwd ? 
-  <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
-} </button>
+                      <button className="btn btn-link viewpsw" type='button' onClick={() => setIsLoginRevealPwd(prevState => !prevState)} >
+                        {isLoginRevealPwd ?
+                          <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
+                        } </button>
                       <p className='text-danger'>{loginErrors.loginPassword}</p>
+                      <p className=' fw-medium text-start fs-6'>
+                        <small>
+                       <a className='theme-color text-decoration-none' href="/forgot-password"> Forgot Password</a> </small></p>
                     </div>
                     <div className="form-group">
-                      <button className="btn btn-block" type="submit">Login</button></div>
+                      <button className="btn btn-block" type="submit">Login</button>
+                    </div>
+                    <div className='mt-5 mb-3 well'>
+                      <p className="text-divider"><span>Or Sign up with</span></p>
+                    </div>
+                    <div className="d-flex justify-content-around mt-5">
+                      <img src="https://img.icons8.com/color/48/null/google-logo.png" />
+                      <img src="https://img.icons8.com/ios-filled/50/null/mac-os.png" />
+                    </div>
                   </form>
                 </TabPanel>
               </TabContext>

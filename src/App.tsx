@@ -14,6 +14,7 @@ import HomePage from "./pages/home/HomePage";
 import Student from "./pages/student/Student";
 import PaymentProof from "./pages/courses/payment-proof";
 import CourseSuccss from "./pages/registration/course-success";
+import ForgotPassword from "./pages/registration/forgot-Password";
 
 function App() {
   return (
@@ -31,12 +32,9 @@ function App() {
       <Route path="/proof" element={<PaymentProof />}></Route> 
       <Route path="/register-thankyou" element={<Thankyou />}></Route>
       <Route path="/course-success" element={<CourseSuccss />}></Route>
+      <Route path="/forgot-password" element={<ForgotPassword />}></Route>
         {/* <Route path="/register" element={<Register />}></Route>
-        
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
-
-       
-
         {/* <Route path="/dashboard" element={<MainLayout />}></Route> 
         <Route path="/dashboard/student" element={<MainLayout />}></Route>*/}
         
