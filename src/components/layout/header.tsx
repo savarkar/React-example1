@@ -32,10 +32,7 @@ function Commonheader(){
           {/* <a className="nav-link active" aria-current="page" href="/">Home</a> */}
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Student</a>
-        </li>
-        <li className="nav-item">
-          <a className="btn btn-sm mt-1 btn-primary">
+          <a href='/profile' className="btn btn-sm mt-1 btn-primary">
             My Profile
           </a>
         </li>

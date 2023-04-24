@@ -1,5 +1,5 @@
 .learning-headsection{
-    background-color:blueviolet ;
+    background-color:#2C0065 ;
     padding: 20px 0px;
 }
 .learning-headsection h4{
@@ -79,16 +79,16 @@ width: auto;
   .wrap .item:first-child{
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: linear-gradient(to bottom, #2b0e48 0%, #a83fcb 100%);
+    background: linear-gradient(180deg, #AA72F2 0%, rgba(46, 10, 87, 0.98) 87.15%);
   }
   .wrap .item:last-child{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    background: linear-gradient(to bottom, #2b0e48 0%, #a83fcb 100%);
+    background: linear-gradient(180deg, #AA72F2 0%, rgba(46, 10, 87, 0.98) 87.15%);;
   }
   .item {
     height: 200px;
-    background: linear-gradient(to bottom, #3e007a 0%, #9f03d3 100%);
+    background: linear-gradient(180deg, #AF7CF0 0%, #9782B3 100%);;
     margin-bottom: 10px;
     padding: 10px;
     text-align: center;
@@ -101,7 +101,7 @@ width: auto;
   }
   @media screen and (min-width:860px) {
     .wrap{
-        width: 800px;
+        width: 1064px;
     }
    .wrap .item{
         width: 30%;
@@ -370,3 +370,9 @@ border:0px;
 }
 .copyright a{color:#ffffff;transition: all 0.2s ease 0s;}
 .copyright a:hover{color:#29006b;}
+
+.line {
+    height: 2px;
+    background: linear-gradient(to right, transparent 50%, #29006b 50%);
+    background-size: 8px 2px, 100% 2px;
+  }

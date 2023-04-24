@@ -9,8 +9,8 @@ import useGlobalState from '../../services/GlobalState';
 
 type Props = {};
 
-//function Allcourses() {
-  const Allcourses = (props: Props) => {
+//function Mycourses() {
+  const Mycourses = (props: Props) => {
     const history = useNavigate();
   const [courses, setCourses] = useState([])
   const [courseobject, setCourseobject] = useGlobalState("courseobject");
@@ -65,14 +65,14 @@ type Props = {};
       <div className='bg-home'>
       <div className="container h-100 mt-5 p-3">
       <div className='border rounded-circle text-center' style={{width:'40px', height:'40px'}}>
-      <div className='left-angle'>
+       <div className='left-angle'>
         <a href='/mylearnings' className='btn-link'>
          <i className="fa fa-angle-left text-white fa-2x"></i></a>
        </div>
          </div> 
 <div className="d-flex flex-column justify-content-center h-100 ">
   {/* <span style={{width:'40px',height:'40px'}} className='border rounded-circle p-2 text-center'><i className="fa fa-angle-left"></i></span> */}
-    <h2 className='mt-5'>All Courses</h2>
+    <h2 className='mt-5'>My Courses</h2>
     <p>Course Summary</p>
     <div className='col-md-4'>
       <input type='text' className='form-control w-md-50' placeholder='Search' />
@@ -115,18 +115,12 @@ type Props = {};
 <div className="col-lg-4 col-md-6 mb-5">
       {/* <!-- Card--> */}
       <div className="card rounded shadow-sm border-0">
-        <div className="card-body p-0">
-          <img src={dd} alt="" className="img-fluid d-block mx-auto mb-3" />
+        <div className="card-body p-0"><img src={dd} alt="" className="img-fluid d-block mx-auto mb-3" />
           <div className='p-3 card-body-inner'>
-            <div className='row'>
-           <h5 className='col-md-6' onClick={() => goToQrCode(item)}>
+        
+           <h5 onClick={() => goToQrCode(item)}>
             {item.courseName}         
-            </h5>
-            <div className='col-md-6 d-flex justify-content-between'>
-              <button type='button' className='btn btn-primary mr-3'>BUY</button>
-              <i className="fa fa-cart-plus fa-2x pl-3"></i>
-            </div>
-            </div> 
+            </h5> 
  {/* <div>
       <button onClick={() => goToQrCode(item)}>Click me</button>
     </div> */}
@@ -164,11 +158,8 @@ type Props = {};
           </ul>              
             </div>
           </div>
-          <div className="d-flex justify-content-between">
-            <div className="d-flex col-md-4 ">
-              <p className='fw-bold h6 theme-color'>Price: $8</p>
-              </div>
-            <div className="d-flex col-md-8 justify-content-around">
+          <div className="d-flex justify-content-end">
+            <div className="d-flex col-md-9 justify-content-around">
               <span><i className="fa fa-signal text-success"></i> Beginer</span>
               <span>10 Weeks</span>
             </div>
@@ -188,4 +179,4 @@ type Props = {};
     </div>
   )
 }
-export default Allcourses;
+export default Mycourses;

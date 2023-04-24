@@ -10,7 +10,7 @@ import useGlobalState from '../../services/GlobalState';
 type Props = {};
 
 //function Allcourses() {
-  const Allcourses = (props: Props) => {
+  const MyWishList = (props: Props) => {
     const history = useNavigate();
   const [courses, setCourses] = useState([])
   const [courseobject, setCourseobject] = useGlobalState("courseobject");
@@ -72,7 +72,7 @@ type Props = {};
          </div> 
 <div className="d-flex flex-column justify-content-center h-100 ">
   {/* <span style={{width:'40px',height:'40px'}} className='border rounded-circle p-2 text-center'><i className="fa fa-angle-left"></i></span> */}
-    <h2 className='mt-5'>All Courses</h2>
+    <h2 className='mt-5'>My Wishlist</h2>
     <p>Course Summary</p>
     <div className='col-md-4'>
       <input type='text' className='form-control w-md-50' placeholder='Search' />
@@ -188,4 +188,4 @@ type Props = {};
     </div>
   )
 }
-export default Allcourses;
+export default MyWishList;

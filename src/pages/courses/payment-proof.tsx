@@ -105,7 +105,8 @@ function createSubscription(base64:any){
         endDate: "10-12-2024",
         courseFee: 100,
         paymentRefID: text,
-        paymentProofDoc: base64
+      //  paymentProofDoc: base64
+        paymentProofDoc: 'base64iVBORw0KGgoAAAANSUhEUgAABVYAAAPbCAYAAAC3x9AuAAAAAXNSR0IArs4c6QAAIABJREFUeF7snXtcVHX'
       }
       const response = fetch("http://13.233.223.217:2020/api/v1/student_subscriptions/createSubscription", {
         method: "POST",

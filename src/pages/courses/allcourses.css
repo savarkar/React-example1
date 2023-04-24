@@ -1,14 +1,18 @@
 .bg-home{
-    background: linear-gradient(180deg, #35185A 0%, rgba(53, 24, 90, 0.79) 100%);
+    background:#2C0065;
     color: #fff;
     padding: 30px 0px;
 }
+a{
+    color: #290854;
+}
+.border{
+  border:1px solid #7444AB
+}
 .card-body-inner{
-    font-size: 11px;
+    font-size: 11px;    
 }
-.card-body-inner .fa{
-    font-size: 8px;
-}
+
 .text-theme{
     color: #290854;
 }
@@ -117,7 +121,7 @@
    color:#025a8e;
 }
 .left-angle{
-    padding-top: 7px;
+    padding: 3px;
 text-align: center;
 
 }

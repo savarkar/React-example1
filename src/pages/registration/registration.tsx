@@ -273,28 +273,28 @@ const Register = (props: Props) => {
                       <input className="form-control" type="text" placeholder="Full name"
                         id="firstName"
                         name="firstName"
-                        value={values.firstName} onBlur={handleChange} onChange={handleChange}
+                        value={values.firstName}  onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.firstName}</p>
                     </div>
                     <div className="form-group">
                       <input className="form-control" type="email" name="email" placeholder="Email"
                         id="email"
-                        value={values.email} onBlur={handleChange} onChange={handleChange}
+                        value={values.email}  onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.email}</p>
                     </div>
                     <div className="form-group">
                       <input className="form-control" type="text" name="mobileNumber" placeholder="Mobile Number"
                         id="mobileNumber"
-                        value={values.mobileNumber} onBlur={handleChange} onChange={handleChange}
+                        value={values.mobileNumber}  onChange={handleChange}
                       />
                       <p className='text-danger'>{errors.mobileNumber}</p>
                     </div>
                     <div className="form-group p-relative">
                       <input className="form-control " name="password" placeholder="Password"
                         id="password" type={isRevealPwd ? "text" : "password"}
-                        value={values.password} onBlur={handleChange} onChange={handleChange}
+                        value={values.password}  onChange={handleChange}
                       />
 
                       <button className="btn btn-link viewpsw" onClick={() => setIsRevealPwd(prevState => !prevState)} >
@@ -347,7 +347,7 @@ const Register = (props: Props) => {
                     <div className="form-group p-relative">
                       <input className="form-control " name="loginPassword" placeholder="Password"
                         id="loginPassword" type={isLoginRevealPwd ? "text" : "password"}
-                        value={loginvalues.loginPassword} onBlur={handleChange} onChange={handleChange}
+                        value={loginvalues.loginPassword}  onChange={handleChange}
                       />
 
                       <button className="btn btn-link viewpsw" type='button' onClick={() => setIsLoginRevealPwd(prevState => !prevState)} >

@@ -15,6 +15,9 @@ import Student from "./pages/student/Student";
 import PaymentProof from "./pages/courses/payment-proof";
 import CourseSuccss from "./pages/registration/course-success";
 import ForgotPassword from "./pages/registration/forgot-Password";
+import MyWishList from "./pages/courses/my-wishlist";
+import Mycourses from "./pages/courses/my-courses";
+import SrudentProfile from "./pages/student/student-profile";
 
 function App() {
   return (
@@ -26,13 +29,16 @@ function App() {
           {routes}
         </Route>
         <Route path="/mylearnings" element={<MyLearnings />}></Route>
-        <Route path="/all-courses" element={<Allcourses />}></Route>
+        <Route path="/my-courses" element={<Mycourses />}></Route>
         <Route path="/coursedetails" element={<CourseDetails />}></Route>
       <Route path="/qrcode" element={<Qrcodes />}></Route> 
       <Route path="/proof" element={<PaymentProof />}></Route> 
       <Route path="/register-thankyou" element={<Thankyou />}></Route>
       <Route path="/course-success" element={<CourseSuccss />}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+      <Route path="/my-wishlist" element={<MyWishList />}></Route>
+      <Route path="/all-courses" element={<Allcourses />}></Route>
+      <Route path="/profile" element={<SrudentProfile />}></Route>
         {/* <Route path="/register" element={<Register />}></Route>
         <Route path="/register-thankyou" element={<Thankyou />}></Route>
         {/* <Route path="/dashboard" element={<MainLayout />}></Route> 

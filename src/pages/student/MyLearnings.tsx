@@ -35,20 +35,23 @@ const MyLearnings = (props: Props) => {
         <div className='container'>
           <h4>My Learnings</h4>
           </div>
-      </div>
+     
+      <div className='row pt-5'>
+    <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <a className="nav-link active text-white fs-5" href="/all-courses">All Courses</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link text-white fs-5" href="/my-courses">My Courses</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link text-white fs-5" href="/my-wishlist">Wishlist</a>
+  </li>
+</ul>
+      </div> </div>
       <div className='container'>
     <div></div>
-            <Box sx={{ width: '100%', typography: 'body1' }} className="tabs-section">
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChangeTab} aria-label="lab API tabs example">
-            <Tab label="All Courses" value="1" />
-            <Tab label="My Courses" value="2" />
-            <Tab label="Wishlist" value="3" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
-        <div className="wrap row">
+    <div className="wrap row">
             <div className="item">
             <div><img src="https://img.icons8.com/color/48/null/pdf.png"/></div>
             <p><b>Saved PDF or Notes</b></p>
@@ -101,6 +104,19 @@ const MyLearnings = (props: Props) => {
 
           </div>
             </div>
+            {/* <Box sx={{ width: '100%', typography: 'body1' }} className="tabs-sections">
+      <TabContext value={value}>
+        {/* <div className='d-flex justify-content-center'>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }} >
+          <TabList onChange={handleChangeTab} aria-label="lab API tabs example" >
+            <Tab label="All Courses" value="1" />
+            <Tab label="My Courses" value="2" />
+            <Tab label="Wishlist" value="3" />
+          </TabList>
+        </Box>
+        </div> 
+        <TabPanel value="1">
+       
         </TabPanel>
         <TabPanel value="2">
           <p>ju</p>
@@ -110,7 +126,7 @@ const MyLearnings = (props: Props) => {
           <p>zxczxz czxzxcx</p>
         </TabPanel>
       </TabContext>
-    </Box>
+    </Box> */}
    
           </div>
 
