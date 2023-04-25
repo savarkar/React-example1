@@ -18,6 +18,7 @@ import ForgotPassword from "./pages/registration/forgot-Password";
 import MyWishList from "./pages/courses/my-wishlist";
 import Mycourses from "./pages/courses/my-courses";
 import SrudentProfile from "./pages/student/student-profile";
+import ResetPassword from "./pages/registration/reset-Password";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <Route path="/register-thankyou" element={<Thankyou />}></Route>
       <Route path="/course-success" element={<CourseSuccss />}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+      <Route path="/reset-password" element={<ResetPassword />}></Route>
       <Route path="/my-wishlist" element={<MyWishList />}></Route>
       <Route path="/all-courses" element={<Allcourses />}></Route>
       <Route path="/profile" element={<SrudentProfile />}></Route>

@@ -3,28 +3,31 @@ import './registration-thankyou.css';
 
 type Props = {};
 interface FormValues {
-  email: string;
+  password: string;
 
 }
-const ForgotPassword = (props: Props) => {
+const ResetPassword = (props: Props) => {
   const [values, setFormValues] = React.useState<FormValues>({
-    email: "",
+    password: "",
   });
   const [isLoginRevealPwd, setIsLoginRevealPwd] = React.useState(false);
   const [errors, setErrors] = React.useState({
-    email: "",
+    password: "",
   });
   const validateForm = (): boolean => {
-    const {email } = values;
+    const {password } = values;
     const errors = {
-      email: "",
+      password: "",
     };
     let isValid = true;
 
-    if (!email) {
-      errors.email = "Email is required";
+    if (!password) {
+      errors.password = "Password is required";
       isValid = false;
-    } 
+    } else if (password.length < 8) {
+      errors.password = "Password must be at least 6 characters long";
+      isValid = false;
+    }
 
     setErrors(errors);
     return isValid;
@@ -43,21 +46,21 @@ const ForgotPassword = (props: Props) => {
         <div className="wrapper-1">
           <div className="wrapper-2 p-5">
             <h2 className='pb-2 theme-color fw-bolder'>Reset your Password</h2>
-            <p className='pb-4 theme-second-color fw-bolder'>We will send you an email to reset your password </p>
+            <p className='pb-4 theme-second-color fw-bolder'>The password must contain at least contains 8 charcters </p>
             {/* <p>you should receive a confirmation email soon  </p> */}
             <div className="form-group p-relative">
-                      <input className="form-control p-2" name="forgotEmail" placeholder="Email"
-                        id="forgotEmail" type={isLoginRevealPwd ? "text" : "email"}
-                        value={values.email} onBlur={handleChange} onChange={handleChange}
+                      <input className="form-control p-2" name="forgotPassword" placeholder="Password"
+                        id="forgotPassword" type={isLoginRevealPwd ? "text" : "password"}
+                        value={values.password} onBlur={handleChange} onChange={handleChange}
                       />
                       <button className="btn btn-link viewpswForgot mt-5" type='button' onClick={() => setIsLoginRevealPwd(prevState => !prevState)} >
                         {isLoginRevealPwd ?
                           <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
                         } </button>
-                      <p className='text-danger mt-2'>{errors.email}</p>
+                      <p className='text-danger mt-2'>{errors.password}</p>
                     </div>
                     <div className="form-group mt-5 pb-5">
-                      <button className="btn btn-block btn-primary w-100" type="submit">Send</button></div>
+                      <button className="btn btn-block btn-primary w-100" type="submit">Reset Password</button></div>
           </div>
           {/* <div className="footer-like">
             <p>Email not received?
@@ -70,4 +73,4 @@ const ForgotPassword = (props: Props) => {
       
         )
 }
-export default ForgotPassword;
+export default ResetPassword;

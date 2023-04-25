@@ -16,6 +16,7 @@ interface FormValues {
   firstName: string;
   email: string;
   password: string;
+  confirmPassword: string;
   lastName: string;
   country: string,
   timeZone: string,
@@ -46,6 +47,7 @@ const Register = (props: Props) => {
     firstName: "",
     email: "",
     password: "",
+    confirmPassword:"",
     lastName: "NA",
     country: "IN",
     timeZone: "asia",
@@ -60,6 +62,7 @@ const Register = (props: Props) => {
     firstName: "",
     email: "",
     password: "",
+    confirmPassword:"",
     lastName: "NA",
     country: "NA",
     timeZone: "NA",
@@ -122,6 +125,7 @@ const Register = (props: Props) => {
         firstName: "",
         email: "",
         password: "",
+        confirmPassword: "",
         lastName: "NA",
         country: "NA",
         timeZone: "NA",
@@ -144,6 +148,7 @@ const Register = (props: Props) => {
           firstName: "",
           email: "",
           password: "",
+          confirmPassword: "",
           lastName: "NA",
           country: "NA",
           timeZone: "NA",
@@ -177,11 +182,12 @@ const Register = (props: Props) => {
     validateLoginForm();
   }
   const validateForm = (): boolean => {
-    const { firstName, email, mobileNumber, password } = values;
+    const { firstName, email, mobileNumber, password, confirmPassword } = values;
     const errors = {
       firstName: "",
       email: "",
       password: "",
+      confirmPassword: "",
       lastName: "NA",
       country: "NA",
       timeZone: "NA",
@@ -208,6 +214,16 @@ const Register = (props: Props) => {
       isValid = false;
     } else if (password.length < 6) {
       errors.password = "Password must be at least 6 characters long";
+      isValid = false;
+    }
+    if (!confirmPassword) {
+      errors.confirmPassword = "Confirm password is required";
+
+    } else if (confirmPassword !== values.password) {
+      errors.confirmPassword  =
+        'Password and Confirm Password does not match.';
+    } else {
+      errors.confirmPassword = '';
       isValid = false;
     }
     if (!mobileNumber) {
@@ -301,12 +317,14 @@ const Register = (props: Props) => {
                         {isRevealPwd ?
                           <i className="fa fa-eye" aria-hidden="true"></i> : <i className="fa fa-eye-slash" aria-hidden="true"></i>
                         } </button>
-
-                      {/* <a href="#"  onClick={() => {
-            setShowPin(!showPin);
-          }}></a> 
-          {showPin ? 'Skjul' : 'Vis'}{' '} <i className="fa fa-eye" aria-hidden="true"></i> */}
                       <p className='text-danger'>{errors.password}</p>
+                    </div>
+                    <div className="form-group p-relative">
+                      <input className="form-control " name="confirmPassword" placeholder="Confirm Password"
+                        id="confirmPassword" type={isRevealPwd ? "text" : "Confirm Password"}
+                        value={values.confirmPassword}  onChange={handleChange}
+                      />
+                      <p className='text-danger'>{errors.confirmPassword}</p>
                     </div>
 
                     <div className="form-group">
