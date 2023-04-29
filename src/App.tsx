@@ -19,6 +19,10 @@ import MyWishList from "./pages/courses/my-wishlist";
 import Mycourses from "./pages/courses/my-courses";
 import SrudentProfile from "./pages/student/student-profile";
 import ResetPassword from "./pages/registration/reset-Password";
+import RegisterBank from "./pages/registration/registration-bank";
+import Video from "./pages/courses/video";
+import Pdf from "./pages/courses/pdfs";
+import Questions from "./pages/courses/questions";
 
 function App() {
   return (
@@ -41,8 +45,11 @@ function App() {
       <Route path="/my-wishlist" element={<MyWishList />}></Route>
       <Route path="/all-courses" element={<Allcourses />}></Route>
       <Route path="/profile" element={<SrudentProfile />}></Route>
-        {/* <Route path="/register" element={<Register />}></Route>
-        <Route path="/register-thankyou" element={<Thankyou />}></Route>
+        <Route path="/register-bank" element={<RegisterBank />}></Route>
+        <Route path="/video" element={<Video />}></Route>
+        <Route path="/pdf" element={<Pdf />}></Route>
+        <Route path="/questions" element={<Questions />}></Route>
+        {/* <Route path="/register-thankyou" element={<Thankyou />}></Route>
         {/* <Route path="/dashboard" element={<MainLayout />}></Route> 
         <Route path="/dashboard/student" element={<MainLayout />}></Route>*/}
         

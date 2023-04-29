@@ -70,11 +70,11 @@ type Props = {};
          <i className="fa fa-angle-left text-white fa-2x"></i></a>
        </div>
          </div> 
-<div className="d-flex flex-column justify-content-center h-100 ">
+<div className="d-flex flex-column justify-content-center h-100 text-center">
   {/* <span style={{width:'40px',height:'40px'}} className='border rounded-circle p-2 text-center'><i className="fa fa-angle-left"></i></span> */}
-    <h2 className='mt-5'>All Courses</h2>
-    <p>Course Summary</p>
-    <div className='col-md-4'>
+    <h2 className='mt-5 display-3 mb-4'>All Courses</h2>
+    {/* <p>Course Summary</p> */}
+    <div className='col-md-5 text-center mx-auto'>
       <input type='text' className='form-control w-md-50' placeholder='Search' />
     </div>
   </div>
