@@ -1,0 +1,80 @@
+ 
+  .sidebar {
+    background: #AC86DE;
+    display: none;
+    position: fixed !important;
+    width: 280px;
+    left: 0px;
+    text-align: left;
+    height: 100vh;
+    z-index: 1000;
+  
+    @media(min-width:576px){
+          position: fixed;
+          flex:1;
+      }
+  }
+  
+  .sidebar--open {
+    display: block; 
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: animateleft;
+    position:relative;
+  }
+  
+  .menu {
+    padding: 24px 0;
+  
+      ul{
+      padding: 0;
+      list-style: none;
+        
+      a {
+        padding: 12px ;
+        text-decoration: none;
+        display: block;
+        color: black;
+        border-bottom: 1px solid #2B0854 ;
+  
+        &:hover {
+          background: rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+  
+  .content {
+    transition-property: margin-left;
+    transition-duration: 0.6s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  
+     @media(min-width:576px){
+        flex:2;
+      }
+  }
+  
+  .content--open {
+    margin-left: 5%;
+  }
+  
+  @keyframes animateleft{
+    from{ 
+      left:-400px; 
+      opacity:1
+    }
+    to{
+        left:0;
+        opacity:1;
+      
+    }
+  }
+  
+  
+  
